@@ -1,0 +1,14 @@
+<% 1.upto(8).each do |l| %>
+    <%= @response[l]['map'].keys[0] %>
+<% end %>
+
+<hr>
+
+<% @response[1]['map'].each do |key, array| %>
+    <% if array.present? %>
+        <%= array.each do |innerkey, element| %>
+            키 : <%= innerkey %></br>
+            밸류 : <%= element %></br>
+        <% end %><hr>
+    <% end %>
+<% end %>

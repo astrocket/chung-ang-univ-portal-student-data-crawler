@@ -1,0 +1,35 @@
+// Place all the styles related to the parser controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.main-frame {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.id-form {
+  width: 25vw;
+  height: 25vh;
+}
+
+.id-form form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#id-field {
+  width: 70%;
+  height: 35px;
+  font-size: 30px;
+}
+
+#id-button {
+  width: 20%;
+  height: 40px;
+  font-size: 30px;
+}
