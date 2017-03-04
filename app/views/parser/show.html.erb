@@ -1,14 +1,79 @@
-<% 1.upto(8).each do |l| %>
-    <%= @response[l]['map'].keys[0] %>
+<h1>1번째 데이터</h1>
+<div class="box">
+  <% @response[1]['map'].each do |key, array| %>
+      <% if array.present? %>
+          <% if key.kind_of?(Array) %>
+              <% key.each do |keykey, arrayarray| %>
+                  <h3><%= keykey %></h3>
+                  <div class="box">
+                    <%= arrayarray %>
+                  </div>
+              <% end %>
+          <% end %>
+          <div class="box">
+            <% array.each do |twokey, e| %>
+                <% if twokey.kind_of?(Array) %>
+                    <% twokey.each do |twokeykey, ee| %>
+                        <h3><%= twokeykey %></h3>
+                        <div class="box">
+                          <%= ee %>
+                        </div>
+                    <% end %>
+                <% end %>
+                <div class="box">
+                  <% if e.kind_of?(Array) %>
+                      <% e.each do |threekey, block| %>
+                          <% if threekey.kind_of?(Array) %>
+                              <% threekey.each do |fourkey, bloc| %>
+                                  <h3><%= fourkey %>ㄷ</h3>
+                                  <div class="box">
+                                    <%= bloc %>
+                                  </div>
+                              <% end %>
+                          <% end %>
+                          <div class="box">
+                            <%= block %>
+                          </div>
+                      <% end %>
+                  <% end %>
+                </div>
+            <% end %>
+          </div>
+      <% end %>
+  <% end %>
+</div>
+
+<% 1.upto(9).each do |l| %>
+    <h1><%= l %>번째 데이터</h1>
+    <div class="box">
+      <% @response[l]['map'].each do |key, array| %>
+          <% if array.present? %>
+              <% if key.kind_of?(Array) %>
+                  <% key.each do |twokey, keyarray| %>
+                      <h3><%= twokey %></h3>
+                      <div class="box">
+                        <%= keyarray %>
+                      </div>
+                  <% end %>
+              <% end %>
+              <div class="box">
+                <% array.each do |twokey, element| %>
+                    <h3><%= twokey %></h3>
+                    <div class="box">
+                      <% if element.kind_of?(Array) %>
+                          <% element.each do |threekey, block| %>
+                              <h3><%= threekey %></h3>
+                              <div class="box">
+                                <%= block %>
+                              </div>
+                          <% end %>
+                      <% end %>
+                    </div>
+                <% end %>
+              </div>
+          <% end %>
+      <% end %>
+    </div>
 <% end %>
 
 <hr>
-
-<% @response[1]['map'].each do |key, array| %>
-    <% if array.present? %>
-        <%= array.each do |innerkey, element| %>
-            키 : <%= innerkey %></br>
-            밸류 : <%= element %></br>
-        <% end %><hr>
-    <% end %>
-<% end %>

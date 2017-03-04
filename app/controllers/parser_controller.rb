@@ -12,19 +12,27 @@ class ParserController < ApplicationController
   def show
     student = params[:student]
 
-    data = "<map><serchstdno value='#{student}'/><stdno value='#{student}'/></map>"
-    url = []
+    data = [
+        "<map><id value=value='#{student}'/><usergb value='S'/>",
+        "<map><userId value='#{student}'/><groupCode value='cau'/><recordCountPerPage value='10'/><pageIndex value='1'/><kisuYear value='#{student.split("").first(4)}'/><kisuNo value='20171'/></map>"
+    ]
+
+    url = [
+        "https://cautis.cau.ac.kr/TIS/comm/SessionInfo/selectInfo.do",
+        "http://cautis.cau.ac.kr/LMS/LMS/prof/myp/pLmsMyp050/selectStudDataInCourseList.do"
+    ]
+
     @response = []
 
-    1.upto(8).each do |l|
-      url[l] = "https://cautis.cau.ac.kr/TIS/std/uhs/sUhsPer001Tab0#{l}/selectList.do"
+    data.length.times do |l|
       @response[l] = HTTParty.post(
           url[l],
           :headers => {
               'Content-Type' => 'application/xml'
           },
-          :body => data
+          :body => data[l]
       )
     end
+
   end
 end
