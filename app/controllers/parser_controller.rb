@@ -12,27 +12,38 @@ class ParserController < ApplicationController
   def show
     student = params[:student]
 
-    data = [
-        "<map><id value=value='#{student}'/><usergb value='S'/>",
-        "<map><userId value='#{student}'/><groupCode value='cau'/><recordCountPerPage value='10'/><pageIndex value='1'/><kisuYear value='#{student.split("").first(4)}'/><kisuNo value='20171'/></map>"
-    ]
+    test_data = "<map><serchstdno value='#{student}'/><stdno value='#{student}'/></map>"
+    info_data = "<map><id value='#{student}'/><usergb value='S'/></map>"
+    course_data = "<map><userId value='#{student}'/><groupCode value='cau'/><recordCountPerPage value='10'/><pageIndex value='1'/><kisuYear value='#{student.split(//).first(4).join.to_s}'/><kisuNo value='20171'/></map>"
 
-    url = [
-        "https://cautis.cau.ac.kr/TIS/comm/SessionInfo/selectInfo.do",
-        "http://cautis.cau.ac.kr/LMS/LMS/prof/myp/pLmsMyp050/selectStudDataInCourseList.do"
-    ]
+    test_url = "https://cautis.cau.ac.kr/TIS/std/uhs/sUhsPer001Tab01/selectList.do"
+    info_url = "https://cautis.cau.ac.kr/TIS/comm/SessionInfo/selectInfo.do"
+    course_url = "http://cautis.cau.ac.kr/LMS/LMS/prof/myp/pLmsMyp050/selectStudDataInCourseList.do"
 
+    @info = HTTParty.post(info_url, :headers=>{'Content-Type'=>'application/xml'},:body=>info_data)
+    @course = HTTParty.post(course_url, :headers=>{'Content-Type'=>'application/xml'},:body=>course_data)
+    @test = HTTParty.post(test_url, :headers=>{'Content-Type'=>'application/xml'},:body=>test_data)
+
+
+  end
+
+  def showed
+    student = params[:student]
+
+    data = "<map><serchstdno value='#{student}'/><stdno value='#{student}'/></map>"
+    url = []
     @response = []
 
-    data.length.times do |l|
+    1.upto(8).each do |l|
+      url[l] = "https://cautis.cau.ac.kr/TIS/std/uhs/sUhsPer001Tab0#{l}/selectList.do"
       @response[l] = HTTParty.post(
           url[l],
           :headers => {
               'Content-Type' => 'application/xml'
           },
-          :body => data[l]
+          :body => data
       )
     end
-
   end
+
 end
