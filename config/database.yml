@@ -83,6 +83,5 @@ test:
 #
 production:
   <<: *default
-  database: cau_parser_production
-  username: cau_parser
-  password: <%= ENV['CAU_PARSER_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  encoding: unicode

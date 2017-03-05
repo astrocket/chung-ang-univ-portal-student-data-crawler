@@ -14,21 +14,3 @@
     <% end %>
   </div>
 </div>
-
-공지사항데이터
-<hr>
-테스트데이터
-<%= @course.split("<vector id='resList'>")[1] %>
-<hr>
-유저 데이터
-<%= @info %>
-<hr>
-과목 데이터
-<%= @course_simple %>
-<hr>
-<% resolve(@course_simple, '</map>').each do |k| %>
-    <% if filter_by_subdata(k, 'msg') %>
-        <%= k %>
-        <hr>
-    <% end %>
-<% end %>
