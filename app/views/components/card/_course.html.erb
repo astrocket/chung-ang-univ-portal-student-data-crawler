@@ -1,0 +1,16 @@
+<div class="col s12 m6 l3">
+  <div class="card white darken-1">
+    <div class="card-content dark-text">
+      <span class="card-title"><%= find_by_key(course,'lecturenamenum') %></span>
+      <p>
+        교수명 : <%= find_by_key(course,'profname') %><br>
+        과목번호 : <%= find_by_key(course,'lectureno') %>-<%= find_by_key(course,'lecturenum') %><br>
+        수강대상 : <%= find_by_key(course,'subjectname') %>
+      </p>
+    </div>
+    <div class="card-action">
+      <a href="#">수강생 보기</a>
+      <a href="#">강의평가 하기</a>
+    </div>
+  </div>
+</div>
