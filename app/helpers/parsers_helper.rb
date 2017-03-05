@@ -1,7 +1,7 @@
-module ParserHelper
+module ParsersHelper
 
   def resolve(response, text)
-    response.force_encoding('UTF-8').split(text)
+    response.split(text)
   end
 
   def informatic(data)
@@ -17,21 +17,15 @@ module ParserHelper
   end
 
   def find_by_key(data,key)
+    target = ''
     data.split('/><').each do |block|
-      if block.include?(key)
-        return block.split('value=')[1]
+      if block.include?(key + ' ')
+        target =  block.split('value=')[1].split("'")[1]
       else
         nil
       end
     end
-  end
-
-  def key(data)
-    data.split(' ')[0]
-  end
-
-  def value(data)
-    data.split('value=')[1]
+    target
   end
 
   def filter_by_subdata(data, subdata)

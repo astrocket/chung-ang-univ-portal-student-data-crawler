@@ -1,0 +1,8 @@
+<li>
+  <div class="collapsible-header profile-header"><span class="badge">자세히 보기</span><i><%= index + 1 %></i><%= notice[0] %> : <%= CGI.unescapeHTML(notice[1]).html_safe %></div>
+  <div class="card white darken-1 collapsible-body profile-body">
+    <div class="card-content dark-text">
+      <p><%= CGI.unescapeHTML(notice[4]).html_safe %></p>
+    </div>
+  </div>
+</li>

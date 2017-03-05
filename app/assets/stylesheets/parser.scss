@@ -10,8 +10,7 @@
 }
 
 .id-form {
-  width: 25vw;
-  height: 25vh;
+  width: 90vw;
 }
 
 .id-form form {
@@ -20,6 +19,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.id-form form .input-field {
+  width: 100%;
+}
+
+.id-form form .input-field label i {
+  color: #000;
+}
+
+.id-form form .input-field label.active i {
+  color: #000;
 }
 
 #id-field {
@@ -37,4 +48,11 @@
 .box {
   border: 1px solid black;
   padding: 20px;
+}
+
+//only desktop
+@media (min-width: 768px) {
+  .id-form {
+    width: 50vw;
+  }
 }

@@ -1,0 +1,14 @@
+<li>
+  <div class="collapsible-header profile-header"><span class="badge">자세히 보기</span><i><%= index + 1 %></i><%= find_by_key(profile,'username') %> 학우님</div>
+  <div class="card white darken-1 collapsible-body profile-body">
+    <div class="card-content dark-text">
+      <span class="card-title"><%= find_by_key(profile, 'collegesubjectname') %> (<%= find_by_key(profile, 'userid').split(//).first(4).join %>년도 입학)</span>
+    </div>
+    <div class="card-action">
+      <% unless params[:controller]=='parser' %>
+          <%= link_to '이 학우님이 현재 수강하는 과목 목록 보기', parsers_path(:student => find_by_key(profile,'userid')) %>
+      <% end %>
+      <a href="#">학우님에게 메세지 남기기</a>
+    </div>
+  </div>
+</li>

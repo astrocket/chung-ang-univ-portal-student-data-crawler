@@ -1,0 +1,9 @@
+<div class="col s12">
+  <ul class="collapsible" data-collapsible="accordion">
+    <% resolve(people, '</map>').each_with_index do |k, i| %>
+        <% if filter_by_subdata(k, 'msg') %><!-- 메세지 값 필터 -->
+            <%= render :partial => "#{component('card', 'peoprofile')}", :locals => {:profile => k, :index => i} %>
+        <% end %>
+    <% end %>
+  </ul>
+</div>

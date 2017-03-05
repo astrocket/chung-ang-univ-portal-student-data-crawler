@@ -15,3 +15,18 @@
  */
 
 @import "materialize";
+@import "font-awesome";
+
+.profile-body {
+  margin-top: 0px;
+}
+
+.card-action {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.card-action a {
+  margin-left: 20px;
+  margin-right: 0px !important;
+}
