@@ -39,16 +39,20 @@ class ParsersController < ApplicationController
       end
     end
 
-    notice.length.times do |i|
-      notice_detail_data = "<map><userId value='#{student}'/><groupCode value='cau'/><lectureNo value='#{notice[i][2]}'/><boardNo value='#{notice[i][3]}'/></map>"
-      notice_detail_url = "http://cautis.cau.ac.kr/LMS/LMS/prof/myp/pLmsMyp030/getLectureNotice.do"
-
-      notice_detail = HTTParty.post(notice_detail_url, :headers=>{'Content-Type'=>'application/xml'},:body=>notice_detail_data).body.force_encoding('UTF-8')
-
-      notice[i][4] = find_by_key(notice_detail, 'textcontent')
-    end
-
     notice
+  end
+
+  def get_notice_detail
+    student = params[:student]
+    notice_unit = params[:notice]
+    notice_detail_data = "<map><userId value='#{student}'/><groupCode value='cau'/><lectureNo value='#{notice_unit[2]}'/><boardNo value='#{notice_unit[3]}'/></map>"
+    notice_detail_url = "http://cautis.cau.ac.kr/LMS/LMS/prof/myp/pLmsMyp030/getLectureNotice.do"
+
+    notice_detail = HTTParty.post(notice_detail_url, :headers=>{'Content-Type'=>'application/xml'},:body=>notice_detail_data).body.force_encoding('UTF-8')
+
+    notice_unit[4] = find_by_key(notice_detail, 'textcontent')
+
+    @notice_with_detail = notice_unit
   end
 
   def dummy

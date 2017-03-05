@@ -1,15 +1,14 @@
 <div class="col s12">
   <ul class="collapsible" data-collapsible="accordion">
     <li>
-      <div class="collapsible-header profile-header"><span class="badge">자세히 보기</span><i>Hi</i>과목별 공지사항.</div>
+      <div class="collapsible-header profile-header"><span class="badge">자세히 보기</span><i>Hi</i>과목별 공지사항</div>
       <div class="card white darken-1 collapsible-body profile-body">
-        <div class="card-content dark-text">
-          <p>수강하시는 과목별로 공지사항이 뜨면 한곳에 모아서 보여드립니다.</p>
+        <div class="collection">
+          <% classnotice.each_with_index do |notice, i| %>
+              <%= render :partial => "#{component('card', 'classnoticeinfo')}", :locals => {:notice => notice, :index => i} %>
+          <% end %>
         </div>
       </div>
     </li>
-    <% classnotice.each_with_index do |notice, i| %>
-        <%= render :partial => "#{component('card', 'classnoticedetail')}", :locals => {:notice => notice, :index => i} %>
-    <% end %>
   </ul>
 </div>
