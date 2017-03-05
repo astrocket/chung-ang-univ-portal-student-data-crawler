@@ -8,6 +8,7 @@ end
 gem 'nokogiri'
 gem 'httparty'
 gem 'multi_xml'
+gem 'hashie'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.1'

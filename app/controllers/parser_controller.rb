@@ -20,10 +20,9 @@ class ParserController < ApplicationController
     info_url = "https://cautis.cau.ac.kr/TIS/comm/SessionInfo/selectInfo.do"
     course_url = "http://cautis.cau.ac.kr/LMS/LMS/prof/myp/pLmsMyp050/selectStudDataInCourseList.do"
 
-    @info = HTTParty.post(info_url, :headers=>{'Content-Type'=>'application/xml'},:body=>info_data)
-    @course = HTTParty.post(course_url, :headers=>{'Content-Type'=>'application/xml'},:body=>course_data)
-    @test = HTTParty.post(test_url, :headers=>{'Content-Type'=>'application/xml'},:body=>test_data)
-
+    @info = HTTParty.post(info_url, :headers=>{'Content-Type'=>'application/xml'},:body=>info_data).body
+    @course = HTTParty.post(course_url, :headers=>{'Content-Type'=>'application/xml'},:body=>course_data).body
+    @test = HTTParty.post(test_url, :headers=>{'Content-Type'=>'application/xml'},:body=>test_data).body
 
   end
 

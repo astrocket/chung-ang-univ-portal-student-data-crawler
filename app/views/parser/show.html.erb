@@ -1,10 +1,20 @@
 <h1>1번째 데이터</h1>
 <div class="box">
-  <%= @test['map'] %>
+  <% resolve(@test).each do |k| %>
+      <% if informatic(k) %>
+          <h3><%= key(k) %> : <%= value(k) %></h3>
+      <% end %>
+  <% end %>
   <hr>
-  <%= @info %>
+  <% resolve(@info).each do |k| %>
+      <% if informatic(k) %>
+          <h3><%= key(k) %> : <%= value(k) %></h3>
+      <% end %>
+  <% end %>
   <hr>
-  <%= @course.force_encoding("UTF-8") %>
+  <% resolve(@course).each do |k| %>
+      <% if informatic(k) %>
+          <h3><%= key(k) %> : <%= value(k) %></h3>
+      <% end %>
+  <% end %>
 </div>
-
-<%= params[:student].split(//).first(4).join %>
