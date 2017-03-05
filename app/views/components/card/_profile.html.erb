@@ -2,7 +2,7 @@
   <div class="collapsible-header profile-header"><span class="badge">자세히 보기</span><i class="fa <%= sex_icon(find_by_key(profile,'gen')) %>" aria-hidden="true"></i><%= find_by_key(profile,'kornm') %> 학우님</div>
   <div class="card white darken-1 collapsible-body profile-body">
     <div class="card-content dark-text">
-      <span class="card-title"><%= find_by_key(profile, 'sustnm') %> <%= find_by_key(profile, 'mjnm') %> <%= find_by_key(profile, 'shyr') %>학년 (<%= find_by_key(profile, 'stdno').split(//).first(4).join %>년도 입학)</span>
+      <span class="card-title"><%= find_by_key(profile, 'sustnm') %> <%= find_by_key(profile, 'mjnm') %> <%= find_by_key(profile, 'probshyr') %>학년 (<%= find_by_key(profile, 'stdno').split(//).first(4).join %>년도 입학)</span>
     </div>
     <div class="card-action">
       <% unless params[:controller]=='parsers' %>
@@ -12,3 +12,5 @@
     </div>
   </div>
 </li>
+
+<%= ㄹㅇ %>
