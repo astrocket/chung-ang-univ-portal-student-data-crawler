@@ -1,8 +1,27 @@
 <div class="col s12">
   <ul class="collapsible" data-collapsible="accordion">
-    <% resolve(people, '</map>').each_with_index do |k, i| %>
-        <% if filter_by_subdata(k, 'msg') %><!-- 메세지 값 필터 -->
-            <%= render :partial => "#{component('card', 'peoprofile')}", :locals => {:profile => k, :index => i} %>
+    <% resolve(people, '</map>').each_with_index do |profile, index| %>
+        <% if filter_by_sub_string(profile, 'msg') %><!-- 메세지 값 필터 -->
+            <li>
+              <div class="collapsible-header profile-header"><span class="badge">자세히 보기</span><i><%= index + 1 %></i><%= find_by_key(profile, 'username') %> 학우님</div>
+              <div class="card white darken-1 collapsible-body profile-body">
+                <div class="card-content dark-text">
+                  <span class="card-title"><%= find_by_key(profile, 'collegesubjectname') %> <%= find_by_key(profile, 'probshyr') %>학년 (<%= find_by_key(profile, 'userid').split(//).first(4).join %>년도 입학)</span>
+                  <p>
+                    관리자 계정용 정보<br>
+                    학번 : <%= find_by_key(profile, 'userid') %><br>
+                    메일 : <%= find_by_key(profile, 'email') %><br>
+                    폰번 : <%= find_by_key(profile, 'userhp') %>
+                  </p>
+                </div>
+                <div class="card-action">
+                  <% unless params[:controller]=='parser' %>
+                      <%= link_to '이 학우님이 현재 수강하는 과목 목록 보기', parsers_path(:student => find_by_key(profile, 'userid')) %>
+                  <% end %>
+                  <a href="#">학우님에게 메세지 남기기</a>
+                </div>
+              </div>
+            </li>
         <% end %>
     <% end %>
   </ul>

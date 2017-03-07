@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+      <div class="card-panel teal">
+        <span class="white-text">
+          <%= @course_name %> 수업 미니 eClass
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <%= render :partial => "#{component('card', 'classnotice')}", :locals => {:classnotice => @notice} %>
+  </div>
+</div>
+

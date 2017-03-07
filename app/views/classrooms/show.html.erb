@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
-    <%= render :partial => "#{component('card', 'notice')}", :locals => {:notice => @info} %>
+    <%= render :partial => "#{component('card', 'notice')}", :locals => {:notice => @student_data} %>
   </div>
   <div class="row">
-    <%= render :partial => "#{component('card', 'people')}", :locals => {:people => @classroom} %>
+    <%= render :partial => "#{component('card', 'people')}", :locals => {:people => @course_students} %>
   </div>
 </div>

@@ -1,17 +1,18 @@
 <div class="col s12 m6 l4">
   <div class="card course-card white darken-1">
     <div class="card-content dark-text">
-      <span class="card-title"><%= find_by_key(course,'kornm') %></span>
+      <span class="card-title"><%= find_by_key(course, 'kornm') %></span>
       <p>
-        교수명 : <%= find_by_key(course,'profnm') %><br>
-        과목번호 : <%= find_by_key(course,'sbjtno') %>-<%= find_by_key(course,'clssno') %><br>
-        과목분류 : <%= find_by_key(course,'pobtnm') %><br>
-        수업시간 : <%= find_by_key(course, 'ltbdrm').split('br')[0].to_s.remove('&lt;') %></br>
-        강의실 : <%= find_by_key(course, 'ltbdrm').split('br')[1].to_s.remove('&lt;').remove('&gt;').remove('br') %>
+        교수명 : <%= find_by_key(course, 'profnm') %><br>
+        과목번호 : <%= find_by_key(course, 'sbjtno') %>-<%= find_by_key(course, 'clssno') %><br>
+        과목분류 : <%= find_by_key(course, 'pobtnm') %><br>
+        수업정보<br>
+        <%= CGI.unescapeHTML(find_by_key(course, 'ltbdrm')).html_safe %>
       </p>
     </div>
     <div class="card-action">
-      <%= link_to '수강생', classrooms_path(:student => params[:student], :course => find_by_key(course,'kornm')) %>
+      <%= link_to '수강생', classrooms_path(:student => params[:student], :course => find_by_key(course, 'kornm'), :professor => find_by_key(course, 'profnm')) %>
+      <%= link_to 'eClass', eclass_path(:student => params[:student], :course => find_by_key(course, 'kornm'), :professor => find_by_key(course, 'profnm')) %>
       <a href="#">강의평가</a>
     </div>
   </div>

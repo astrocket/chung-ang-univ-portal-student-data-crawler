@@ -50,6 +50,12 @@
   padding: 20px;
 }
 
+.notice-collection {
+  height: 20vh;
+  overflow: scroll !important;
+  -webkit-overflow-scrolling: touch;
+}
+
 //only desktop
 @media (min-width: 768px) {
   .id-form {

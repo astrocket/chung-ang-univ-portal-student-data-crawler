@@ -1,42 +1,27 @@
-class ClassroomsController < ApplicationController
-  include ParsersHelper
+class ClassroomsController < ParsingController
 
   def show
     student = params[:student]
     course_name = params[:course].split('(')[0]
+    professor = params[:professor]
 
-    classroom_number = find_class_number(student, course_name)
+    course_number = get_course_id(student, course_name, professor) #이렇게 코스 번호 불러오는 과정을 통신 없이 유저 데이터에서 빼오는걸로 바꿔야 한다.
 
-    info_data = "<map><id value='#{student}'/><usergb value='S'/></map>"
-    classroom_data = "<map><lectureNo value='#{classroom_number}'/><userId value='#{student}'/><inqIndex value='inqAll'/><inqValue value=''/></map>"
-
-    info_url = "https://cautis.cau.ac.kr/TIS/comm/SessionInfo/selectInfo.do"
-    classroom_url = "http://cautis.cau.ac.kr/LMS/LMS/prof/lec/pLmsLec040/selectStudentList.do"
-
-    @info = HTTParty.post(info_url, :headers=>{'Content-Type'=>'application/xml'},:body=>info_data).body.force_encoding('UTF-8')
-    @classroom = HTTParty.post(classroom_url, :headers=>{'Content-Type'=>'application/xml'},:body=>classroom_data).body.force_encoding('UTF-8')
-
+    @student_data = get_user_data(student) #개인정보 가져오기
+    @course_students = get_eclass_students(student, course_number)#수강생 리스트 가져오기
   end
 
-  private
+  def eclass
+    student = params[:student]
+    @course_name = params[:course].split('(')[0] #이부분은 뷰에서 코스 이름을 가져와야함
+    professor = params[:professor]
 
-  #정보가 뒤섞여서 날라오기 때문에 클래스넘버를 다른 곳에서 닫시 찾아야한다
-  def find_class_number(student, course_name)
-    course_data = "<map><userId value='#{student}'/><groupCode value='cau'/><recordCountPerPage value='10'/><pageIndex value='1'/><kisuYear value='#{student.split(//).first(4).join.to_s}'/><kisuNo value='20171'/></map>"
-    course_url = "http://cautis.cau.ac.kr/LMS/LMS/prof/myp/pLmsMyp050/selectStudDataInCourseList.do"
-    course = HTTParty.post(course_url, :headers=>{'Content-Type'=>'application/xml'},:body=>course_data).body.force_encoding('UTF-8')
+    course_number = get_course_id(student, @course_name, professor) #코스 번호 가져오기
 
-    resolve(course,'</map>').each do |k|
-      if k.include?(course_name)
-        return find_by_key(k, 'lectureno')
-      end
-    end
-  end
-
-  def dummy
-    test_data = "<map><stdno value='#{student}'/><corscd value='0'/><campcd value='1'/><mjsust value='3B373'/><shyr value='4'/><shregst value='1'/><capyear value='2017'/><capshtm value='1'/><entncd value='13'/><shtmfg value='N'/><colg value='3B300'/><mj value='3B373'/><extrafg value='0'/><normalfg value='1'/><year value='2017'/><shtm value='1'/><delonlyfg value='N'/><cnclfg value='0'/></map>"
-    test_url = "http://sugang.cau.ac.kr/TIS/std/usk/sUskCap002/selectList.do"
-    @test = HTTParty.post(test_url, :headers=>{'Content-Type'=>'application/xml'},:body=>test_data).body.force_encoding('UTF-8')
+    @notice = xml_map_chunk_extraction_job(
+        map_chunk = get_eclass_notice(student, course_number, 100), #eclass 과목 별 notice 리스트의 데이터 map chunk 를 가져온다. 맨 마지막 숫자를 조정해서 불러오는 공지사항의 개수 조절 가능
+        key_array = %w(username boardtitle lectureno boardno boarddate boardcheck) #해당 키값을 전부 뽑아서 2차월 배열에 넣어준다. @notice[0~N]에 분해 된 맵들이 각가 들어가고, 각 유닛의 2차원 배열 @notice[0][0~M]에 키값에 해당하는 밸류가 들어간다.
+    )
 
   end
 

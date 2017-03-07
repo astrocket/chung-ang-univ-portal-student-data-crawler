@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row">
-    <%= render :partial => "#{component('card', 'notice')}", :locals => {:notice => @info} %>
+    <%= render :partial => "#{component('card', 'notice')}", :locals => {:notice => @student_data} %>
   </div>
   <div class="row">
-    <%= render :partial => "#{component('card', 'person')}", :locals => {:person => @info} %>
+    <%= render :partial => "#{component('card', 'person')}", :locals => {:person => @student_data} %>
     <%= render :partial => "#{component('card', 'classnotice')}", :locals => {:classnotice => @notice} %>
-    <% resolve(@course.split("<vector id='resList'>")[1], '</map>').each do |k| %>
-        <% if filter_by_subdata(k, 'msg') %><!-- 메세지 값 필터 -->
+    <% resolve_xml(@course_list.split("<vector id='resList'>")[1], '</map>').each do |k| %>
+        <% if filter_by_sub_string(k, 'msg') %><!-- 메세지 값 필터 -->
             <% unless find_by_key(k, 'clsefg')=='Y' %><!-- 폐강된 수업 필터 -->
                 <%= render :partial => "#{component('card', 'course')}", :locals => {:course => k} %>
             <% end %>

@@ -1,7 +1,4 @@
-require 'httparty'
-require 'multi_xml'
-class ParsersController < ApplicationController
-  include ParsersHelper
+class ParsersController < ParsingController
 
   def index
 
@@ -10,55 +7,29 @@ class ParsersController < ApplicationController
   def show
     student = params[:student]
 
-    course_data = "<map><stdno value='#{student}'/><corscd value='0'/><campcd value='1'/><mjsust value='3B373'/><shyr value='4'/><shregst value='1'/><capyear value='2017'/><capshtm value='1'/><entncd value='13'/><shtmfg value='N'/><colg value='3B300'/><mj value='3B373'/><extrafg value='0'/><normalfg value='1'/><year value='2017'/><shtm value='1'/><delonlyfg value='N'/><cnclfg value='0'/></map>"
-    info_data = "<map><id value='#{student}'/><usergb value='S'/></map>"
+    @student_data = get_user_data(student) #개인정보 가져오기
+    @course_list = get_course_list(student) #수강 과목 리스트 가져오기 이거 년도/학기 별로 가져올 수 있게 코드 수정 필요
+    @notice = xml_map_chunk_extraction_job(
+        map_chunk = get_all_course_notice(student, 100), #eclass 과목 별 notice 리스트의 데이터 map chunk 를 가져온다. 맨 마지막 숫자를 조정해서 불러오는 공지사항의 개수 조절 가능
+        key_array = %w(username lecturenameboardtitle lectureno boardno boarddate boardcheck) #해당 키값을 전부 뽑아서 2차월 배열에 넣어준다. @notice[0~N]에 분해 된 맵들이 각가 들어가고, 각 유닛의 2차원 배열 @notice[0][0~M]에 키값에 해당하는 밸류가 들어간다.
+    )
 
-    course_url = "http://sugang.cau.ac.kr/TIS/std/usk/sUskCap002/selectList.do"
-    info_url = "https://cautis.cau.ac.kr/TIS/comm/SessionInfo/selectInfo.do"
-
-    @info = HTTParty.post(info_url, :headers=>{'Content-Type'=>'application/xml'},:body=>info_data).body.force_encoding('UTF-8')
-    @course = HTTParty.post(course_url, :headers=>{'Content-Type'=>'application/xml'},:body=>course_data).body.force_encoding('UTF-8')
-    @notice = get_notice(student)
-
-  end
-
-  def get_notice(student)
-
-    notice = []
-    notice_data = "<map><userId value='#{student}'/><groupCode value='cau'/><recordCountPerPage value='10'/><pageIndex value='1'/></map>"
-    notice_url = "http://cautis.cau.ac.kr/LMS/LMS/prof/myp/pLmsMyp030/selectStudLectureNoticeList.do"
-
-    notice_list = HTTParty.post(notice_url, :headers=>{'Content-Type'=>'application/xml'},:body=>notice_data).body.force_encoding('UTF-8')
-    resolve(notice_list,'</map>').each_with_index do |k, i|
-      if filter_by_subdata(k, 'msg')
-        notice[i] = []
-        notice[i][0] = find_by_key(k, 'lecturename')
-        notice[i][1] = find_by_key(k, 'boardtitle')
-        notice[i][2] = find_by_key(k, 'lectureno')
-        notice[i][3] = find_by_key(k, 'boardno')
-      end
-    end
-
-    notice
-  end
-
-  def get_notice_detail
-    student = params[:student]
-    notice_unit = params[:notice]
-    notice_detail_data = "<map><userId value='#{student}'/><groupCode value='cau'/><lectureNo value='#{notice_unit[2]}'/><boardNo value='#{notice_unit[3]}'/></map>"
-    notice_detail_url = "http://cautis.cau.ac.kr/LMS/LMS/prof/myp/pLmsMyp030/getLectureNotice.do"
-
-    notice_detail = HTTParty.post(notice_detail_url, :headers=>{'Content-Type'=>'application/xml'},:body=>notice_detail_data).body.force_encoding('UTF-8')
-
-    notice_unit[4] = find_by_key(notice_detail, 'textcontent')
-
-    @notice_with_detail = notice_unit
-  end
-
-  def dummy
-    course_simple_data = "<map><userId value='#{student}'/><groupCode value='cau'/><recordCountPerPage value='10'/><pageIndex value='1'/><kisuYear value='#{student.split(//).first(4).join.to_s}'/><kisuNo value='20171'/></map>"
-    course_simple_url = "http://cautis.cau.ac.kr/LMS/LMS/prof/myp/pLmsMyp050/selectStudDataInCourseList.do"
-    @course_simple = HTTParty.post(course_simple_url, :headers=>{'Content-Type'=>'application/xml'},:body=>course_simple_data).body.force_encoding('UTF-8')
+    #관리자 계정용 정보 !!!!!!! Pundit 으로 반드시 권한 확인 후 코드 실행시켜야 속도 문제 줄어듦
+    #@response = super_user_data(student)
 
   end
+
+
+  def ask_notice_file
+    require 'net/http'
+    require 'uri'
+    filename = params[:filename]
+    filesysname = params[:filesysname]
+    filetype = params[:filetype]
+
+    url = 'http://cautis.cau.ac.kr/LMS/common/download.jsp'
+    body = "fileName=#{filename}&fileSysName=#{filesysname}&fileDir=subDirLMSLms"
+    send_data http_xform_post_job(url, body).body, filename: "#{filename}", type: "application/#{filetype}", stream: 'true', buffer_size: '4096'
+  end
+
 end
