@@ -1,0 +1,26 @@
+<div class="col s12 m6 l6">
+  <ul class="collapsible" data-collapsible="accordion">
+    <li>
+      <div class="collapsible-header profile-header"><span class="badge">자세히 보기</span><i class="fa fa-user" aria-hidden="true"></i><%= @eclass_info[0] %> 수업 소개</div>
+      <div class="card white darken-1 collapsible-body profile-body">
+        <div class="card-content dark-text">
+          <div class="card-info">
+            <% [0,6,7,8,9,10].each do |a| %>
+            <%= @eclass_info_name[a] %> : <%= @eclass_info[a] %></br>
+            <% end %>
+            <% 11.upto(16) do |b| %>
+              <%= @eclass_info_name[b] %> : <%= @eclass_info[b] %>%</br>
+            <% end %>
+            <% (1..3).each do |c| %>
+              <%= @eclass_info[2*(c-1)+17] %> : <%= @eclass_info[2*(c-1)+18] %>%</br>
+            <% end %>
+          </div>
+        </div>
+        <div class="card-action">
+          <a target="_blank" href="http://cautis.cau.ac.kr/TIS/websquare/websquare.html?w2xPath=/TIS/comm/oz_comm_pop.xml&ozr_path=TIS/prof/usk&ozr_nm=pUskLei008&param_odi=year$<%= @year %>,shtm$<%= @semester %>,camp_cd$<%= @eclass_info[4] %>,sust$<%= @eclass_info[5] %>,sbjt_no$<%= @eclass_info[2] %>,clss_no$<%= @eclass_info[3] %>&param_form=new">강의계획서</a>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+

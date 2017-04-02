@@ -6,3 +6,27 @@
     height: 300px;
   }
 }
+
+.container.eclass-page .row {
+  margin-bottom: 0px;
+}
+
+.container.eclass-page .row ul {
+  margin-bottom: 0px;
+}
+
+.container.eclass-page .dropdown-button {
+  margin: 0.5rem 0 0 0;
+  min-height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container.eclass-page .dropdown-content {
+  margin: 0.5rem 0 1rem 0;
+}
+
+.content-video-modal {
+  max-height: 75% !important;
+}

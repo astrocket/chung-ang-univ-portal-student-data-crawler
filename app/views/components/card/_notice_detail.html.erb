@@ -1,0 +1,17 @@
+<div class="col s12">
+  <div class="card white darken-1">
+    <div class="card-content dark-text">
+      <span class="card-title"><%= strip_tags(CGI.unescapeHTML(notice_detail[1]).html_safe) %><span class="badge"><%= notice_detail[4] %> <%= notice_detail[0] %> (<%= notice_detail[6] %>번 조회됨)</span></span>
+      <div class="card-panel grey lighten-5">
+          <span class="dark-text">
+            <%= CGI.unescapeHTML(notice_detail[7]).html_safe %>
+          </span>
+      </div>
+    </div>
+    <div class="card-action">
+      <% notice_detail[8].split('|').each do |file| %>
+          <%= link_to "#{file.split('*')[1]} (#{(file.split('*')[2].to_f / 1.0.megabyte).round(2)}mb)", notice_file_url(:notice_filename => file.split('*')[1], :notice_filesysname => file.split('*')[0], :notice_filetype => file.split('*')[3]), class: 'collection-item' %>
+      <% end %>
+    </div>
+  </div>
+</div>

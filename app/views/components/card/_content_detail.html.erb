@@ -1,0 +1,54 @@
+
+<%= content_detail %>
+<%= content_unit %>
+<div class="col s12">
+  <div class="card white darken-1">
+    <div class="card-content dark-text">
+      <span class="card-title"><%= content_unit[0] %>번째 : <%= content_unit[1] %> <%= strip_tags(CGI.unescapeHTML(content_unit[3]).html_safe) %> (재생시간 : <%= content_unit[4] %>분)<span class="badge"><%= content_unit[6] %></span></span>
+      <div class="card-panel grey lighten-5">
+          <span class="dark-text">
+            <% content_detail.each do |content| %>
+              <% if content[1].split('.')[1]=='coms' %>
+                <!-- Modal Trigger -->
+                <a class="waves-effect waves-light btn" href="#modal1">동영상 강의 보기</a>
+              <% else %>
+                <%= link_to "#{content[1]}", content_file_url(:content_filename => content[1], :content_filesysname => content[2], :content_filetype => content[1].split('.')[1]), class: 'collection-item' %>
+              <% end %>
+            <% end %>
+          </span>
+      </div>
+    </div>
+    <div class="card-action">
+      <% content_unit[7].split('|').each do |file| %>
+          <%= link_to "#{file.split('*')[1]} (#{(file.split('*')[2].to_f / 1.0.megabyte).round(2)}mb)", notice_file_url(:notice_filename => file.split('*')[1], :notice_filesysname => file.split('*')[0], :notice_filetype => file.split('*')[3]), class: 'collection-item' %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal bottom-sheet content-video-modal">
+  <div class="modal-content">
+    <% content_detail.each do |content| %>
+        <% if content[1].split('.')[1]=='coms' %>
+            <div class="row">
+              <p>메인 강의(강의화면) 와 보조 강의(촬영본)가 두개 뜰 경우 한쪽의 음량을 끄고 보시길 추천드립니다.</p>
+              <div class="col s12 m12 l6">
+                <video width="100%" height="auto" controls>
+                  <source src="http://ocs.cau.ac.kr/contents/cau1000001/<%= content[1].split('.')[0] %>/main.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              <div class="col s12 m12 l6">
+                <video width="100%" height="auto" controls>
+                  <source src="http://ocs.cau.ac.kr/contents/cau1000001/<%= content[1].split('.')[0] %>/sub.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
+        <% else %>
+            동영상 강의 없음
+        <% end %>
+    <% end %>
+  </div>
+</div>

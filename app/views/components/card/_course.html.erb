@@ -11,9 +11,9 @@
       </p>
     </div>
     <div class="card-action">
-      <%= link_to '수강생', classrooms_path(:student => params[:student], :course => find_by_key(course, 'kornm'), :professor => find_by_key(course, 'profnm')) %>
       <%= link_to 'eClass', eclass_path(:student => params[:student], :course => find_by_key(course, 'kornm'), :professor => find_by_key(course, 'profnm')) %>
       <a href="#">강의평가</a>
+      <a href="#">타임머신</a>
     </div>
   </div>
 </div>

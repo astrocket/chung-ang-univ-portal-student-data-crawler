@@ -1,11 +1,20 @@
 Rails.application.routes.draw do
 
+  get 'timemachine/index'
+
+  get 'presenters/notice_detail' ,    to: 'presenters#notice_detail', as: :notice_detail
+  get 'presenters/notice_file' ,      to: 'presenters#notice_file', as: :notice_file
+  get 'presenters/content_detail' ,   to: 'presenters#content_detail' , as: :content_detail
+  get 'presenters/content_file' ,     to: 'presenters#content_file' , as: :content_file
+  get 'presenters/professor_detail',  to: 'presenters#professor_detail' , as: :professor_detail
+
   resource :classrooms
-  get 'classrooms/eclass(:format)' , to: 'classrooms#eclass'  , as: :eclass
+  get 'classrooms/eclass(:format)' ,  to: 'classrooms#eclass'  , as: :eclass
+  get 'timemachine/index(:format)', to: 'timemachine#index', as: :timemachine
+
 
   resource :parsers
-  get 'parsers/ask_notice_detail(:format)' , to: 'parsers#ask_notice_detail' , as: :ask_notice_detail
-  get 'parsers/ask_notice_file(:format)' , to: 'parsers#ask_notice_file'  , as: :ask_notice_file
+
 
 
   root 'parsers#index'

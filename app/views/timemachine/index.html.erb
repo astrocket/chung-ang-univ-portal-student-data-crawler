@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+  </div>
+  <div class="row">
+    <%= @time_machine %><hr>
+    <% @time_machine.each do |year| %>
+      <% year.each do |semester| %>
+            <%= render :partial => "#{component('card', 'course_info')}", :locals => {:course => semester} %>
+        <% semester.each do |course| %>
+
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

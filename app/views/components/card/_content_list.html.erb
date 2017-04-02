@@ -1,0 +1,19 @@
+<div class="col s12">
+  <ul class="collapsible" data-collapsible="accordion">
+    <li>
+      <div class="collapsible-header profile-header"><span class="badge">자세히 보기</span><i>Hi</i>강의콘텐츠</div>
+      <div class="card white darken-1 collapsible-body profile-body">
+        <ul class="collection">
+          <li class="collection-item">이번학기에 수강하시는 수업의 강의콘텐츠를 빠르게 확인가능 합니다.</li>
+        </ul>
+        <div class="collection notice-collection">
+          <% content_list.each_with_index do |content_unit, index| %>
+              <%= link_to content_detail_url(:student => params[:student], :content_unit => content_unit), class: 'collection-item', 'data-turbolinks': false do %>
+                  <%= content_unit[0] %>번째 : <%= content_unit[1] %> <%= strip_tags(CGI.unescapeHTML(content_unit[3]).html_safe) %> (재생시간 : <%= content_unit[4] %>분)<span class="badge"><%= content_unit[6] %></span>
+              <% end %>
+          <% end %>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,19 @@
+<div class="col s12">
+  <ul class="collapsible" data-collapsible="accordion">
+    <li>
+      <div class="collapsible-header profile-header"><span class="badge">자세히 보기</span><i>Hi</i>공지사항</div>
+      <div class="card white darken-1 collapsible-body profile-body">
+        <ul class="collection">
+          <li class="collection-item">이번학기에 수강하시는 수업의 공지사항을 빠르게 확인가능 합니다.</li>
+        </ul>
+        <div class="collection notice-collection">
+          <% notice_list.each_with_index do |notice_unit, index| %>
+              <%= link_to notice_detail_url(:student => params[:student], :notice_unit => notice_unit), class: 'collection-item', 'data-turbolinks': false do %>
+                  <%= notice_unit[5]=='Y' ? '중요 : ' : '' %><%= strip_tags(CGI.unescapeHTML(notice_unit[1]).html_safe) %> (조회:<%= notice_unit[6] %>)<span class="badge"><%= notice_unit[4] %></span>
+              <% end %>
+          <% end %>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

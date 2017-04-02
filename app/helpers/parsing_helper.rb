@@ -19,7 +19,7 @@ module ParsingHelper
 
   #키값에 맞는 밸류를 뽑아내는 함수
   def find_by_key(data, key)
-    target = ''
+    target = nil
     data.split('/><').each do |block|
       if block.include?(key + ' ')
         target =  block.split('value=')[1].split("'")[1]
@@ -32,7 +32,7 @@ module ParsingHelper
 
   #해당 데이터가 포함된 문자열을 필터링하는 함수 나중에 통과/패스 필터링리스트를 배열로 넣어서 받아서 돌리도록 바꿔주면 더 좋음
   def filter_by_sub_string(data, subdata)
-    if data.include?(subdata)
+    if subdata.any? {|x| data.include?(x)}
       false
     else
       true

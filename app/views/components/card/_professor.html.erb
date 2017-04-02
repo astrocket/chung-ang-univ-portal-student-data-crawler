@@ -1,0 +1,29 @@
+<div class="col s12 m6 l6">
+  <ul class="collapsible" data-collapsible="accordion">
+    <li>
+      <div class="collapsible-header profile-header"><span class="badge">자세히 보기</span><i class="fa fa-user" aria-hidden="true"></i><%= @eclass_professor[0] %> 교수님 소개</div>
+      <div class="card white darken-1 collapsible-body profile-body">
+        <div class="card-content dark-text">
+          <div class="row">
+            <div class="card-info col s9 m9 l9">
+                소속 : <%= @eclass_professor[4] %> <%= @eclass_professor[5] %> <%= @eclass_professor[6] %><br>
+                이메일 : <%= @eclass_professor[1].present? ? "<a href='mailto:#{@eclass_professor[1]}'>#{@eclass_professor[1]}</a>".html_safe : '이메일 없음' %><br>
+                연구실 : <%= @eclass_professor[2].present? ? "<a href='tel:02-820-#{@eclass_professor[2]}'>02-820-#{@eclass_professor[2]}</a>".html_safe : '전화번호 없음' %><br>
+                휴대폰 : <%= @eclass_professor[3].present? ? "<a href='tel:#{@eclass_professor[3]}'>#{@eclass_professor[3]}</a>".html_safe : '휴대전화 없음' %><br>
+                홈페이지 : <%= @eclass_professor[8].present? ? "<a href='#{@eclass_professor[8]}'>#{@eclass_professor[8]}</a>".html_safe : '홈페이지 없음' %><br>
+                전공분야 : <%= CGI.unescapeHTML(@eclass_professor[7]).html_safe %>
+            </div>
+            <div class="card-image col s3 m3 l3">
+              <%= image_tag "http://cautis.cau.ac.kr/LMS/Upload/LMS/user/upload/#{@eclass_professor[9]}" , src: 'Image Not Found' , onerror: 'this.error=null;this.src="/assets/no_user.png"' %>
+            </div>
+          </div>
+        </div>
+        <div class="card-action">
+
+          <a href="#">교수님께 메세지 남기기</a>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+
