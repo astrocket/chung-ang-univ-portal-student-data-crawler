@@ -2,26 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="009f3d9c-d173-4b91-bc40-eb6447db2381" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/components/card/_notice_detail.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/components/card/_notice_list.html.erb" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/components/card/_classnotice.html.erb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/components/card/_classnoticedetail.html.erb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/parsers/ask_notice_detail.html.erb" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/application.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/application.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/classroom.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/classroom.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/parser.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/parser.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/classrooms_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/classrooms_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/concerns/parsing_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/concerns/parsing_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/parsers_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/parsers_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/helpers/parsing_helper.rb" afterPath="$PROJECT_DIR$/app/helpers/parsing_helper.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/classrooms/eclass.html.erb" afterPath="$PROJECT_DIR$/app/views/classrooms/eclass.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/classrooms/show.html.erb" afterPath="$PROJECT_DIR$/app/views/classrooms/show.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/components/card/_course.html.erb" afterPath="$PROJECT_DIR$/app/views/components/card/_course.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/components/card/_people.html.erb" afterPath="$PROJECT_DIR$/app/views/components/card/_people.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/components/card/_person.html.erb" afterPath="$PROJECT_DIR$/app/views/components/card/_person.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/parsers/show.html.erb" afterPath="$PROJECT_DIR$/app/views/parsers/show.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/components/card/_notice_detail.html.erb" afterPath="$PROJECT_DIR$/app/views/components/card/_notice_detail.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/timemachine/index.html.erb" afterPath="$PROJECT_DIR$/app/views/timemachine/index.html.erb" />
     </list>
     <ignored path="cau_parser.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -65,11 +48,11 @@
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="index.html.erb" pinned="false" current-in-tab="true">
+              <file leaf-file-name="index.html.erb" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/app/views/timemachine/index.html.erb">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="152">
-                      <caret line="8" column="39" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
+                    <state relative-caret-position="76">
+                      <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
                       <folding />
                     </state>
                   </provider>
@@ -105,11 +88,11 @@
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="_notice_detail.html.erb" pinned="false" current-in-tab="false">
+              <file leaf-file-name="_notice_detail.html.erb" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/app/views/components/card/_notice_detail.html.erb">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="209">
-                      <caret line="12" column="61" selection-start-line="12" selection-start-column="61" selection-end-line="12" selection-end-column="61" />
+                    <state relative-caret-position="247">
+                      <caret line="17" column="15" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
                       <folding />
                     </state>
                   </provider>
@@ -142,22 +125,28 @@
               <file leaf-file-name="_course.html.erb" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/app/views/components/card/_course.html.erb">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="152">
-                      <caret line="19" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-                      <folding>
-                        <marker date="1490987159000" expanded="true" signature="26:785" ph="..." />
-                        <marker date="1490987159000" expanded="true" signature="74:778" ph="..." />
-                        <marker date="1490987159000" expanded="true" signature="545:769" ph="..." />
-                      </folding>
+                    <state relative-caret-position="133">
+                      <caret line="7" column="42" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
+                      <folding />
                     </state>
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="_course_info.html.erb" pinned="false" current-in-tab="true">
+              <file leaf-file-name="notice_detail.html.erb" pinned="false" current-in-tab="true">
+                <entry file="file://$PROJECT_DIR$/app/views/presenters/notice_detail.html.erb">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="76">
+                      <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+                      <folding />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="_course_info.html.erb" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/app/views/components/card/_course_info.html.erb">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="266">
-                      <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
+                    <state relative-caret-position="95">
+                      <caret line="5" column="34" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
                       <folding />
                     </state>
                   </provider>
@@ -294,7 +283,6 @@
         <option value="$PROJECT_DIR$/app/views/classrooms/_eclass_info.html.erb" />
         <option value="$PROJECT_DIR$/app/views/presenters/content_detail.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/presenters_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/components/card/_notice_detail.html.erb" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/application.js" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/classroom.scss" />
         <option value="$PROJECT_DIR$/app/views/components/card/_content_detail.html.erb" />
@@ -312,6 +300,7 @@
         <option value="$PROJECT_DIR$/app/views/components/card/_course_info.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/classrooms_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/timemachine/index.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/components/card/_notice_detail.html.erb" />
       </list>
     </option>
   </component>
@@ -890,12 +879,12 @@
       <workItem from="1488970860320" duration="3413000" />
       <workItem from="1490689773005" duration="31765000" />
       <workItem from="1490949052132" duration="14000" />
-      <workItem from="1490984749083" duration="7516000" />
+      <workItem from="1490984749083" duration="7978000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="155741000" />
+    <option name="totallyTimeSpent" value="156203000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1200" extended-state="0" />
@@ -1089,13 +1078,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/presenters/notice_detail.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/presenters/content_file.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1135,14 +1117,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="13">
           <caret line="8" column="16" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/components/card/_notice_detail.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="12" column="61" selection-start-line="12" selection-start-column="61" selection-end-line="12" selection-end-column="61" />
           <folding />
         </state>
       </provider>
@@ -1219,18 +1193,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/components/card/_course.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="19" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding>
-            <marker date="1490987159000" expanded="true" signature="26:785" ph="..." />
-            <marker date="1490987159000" expanded="true" signature="74:778" ph="..." />
-            <marker date="1490987159000" expanded="true" signature="545:769" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/classrooms/eclass.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="551">
@@ -1291,16 +1253,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/components/card/_course_info.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
+        <state relative-caret-position="95">
+          <caret line="5" column="34" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/components/card/_course.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="42" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/presenters/notice_detail.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/timemachine/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="39" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
+        <state relative-caret-position="76">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/components/card/_notice_detail.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="17" column="15" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
           <folding />
         </state>
       </provider>
