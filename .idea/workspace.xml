@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="009f3d9c-d173-4b91-bc40-eb6447db2381" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/components/card/_content_detail.html.erb" afterPath="$PROJECT_DIR$/app/views/components/card/_content_detail.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/components/card/_notice_detail.html.erb" afterPath="$PROJECT_DIR$/app/views/components/card/_notice_detail.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/components/card/_share_detail.html.erb" afterPath="$PROJECT_DIR$/app/views/components/card/_share_detail.html.erb" />
     </list>
     <ignored path="cau_parser.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -21,9 +25,9 @@
     <favorites_list name="cau_parser" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="vertical" split-proportion="0.8076416">
+    <splitter split-orientation="vertical" split-proportion="0.6772069">
       <split-first>
-        <splitter split-orientation="vertical" split-proportion="0.4101307">
+        <splitter split-orientation="vertical" split-proportion="0.4624183">
           <split-first>
             <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
               <file leaf-file-name="classrooms_controller.rb" pinned="false" current-in-tab="false">
@@ -59,8 +63,18 @@
               <file leaf-file-name="application.scss" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.scss">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="99">
-                      <caret line="27" column="24" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
+                    <state relative-caret-position="196">
+                      <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+                      <folding />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="_share_detail.html.erb" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/app/views/components/card/_share_detail.html.erb">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="38">
+                      <caret line="2" column="30" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
                       <folding />
                     </state>
                   </provider>
@@ -101,33 +115,6 @@
                   <provider selected="true" editor-type-id="text-editor">
                     <state relative-caret-position="133">
                       <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="14" selection-end-column="18" />
-                      <folding />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="_share_detail.html.erb" pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/app/views/components/card/_share_detail.html.erb">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="380">
-                      <caret line="20" column="6" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
-                      <folding>
-                        <marker date="1492750829000" expanded="true" signature="20:983" ph="..." />
-                        <marker date="1492750829000" expanded="true" signature="56:976" ph="..." />
-                        <marker date="1492750829000" expanded="true" signature="97:486" ph="..." />
-                        <marker date="1492750829000" expanded="true" signature="346:475" ph="..." />
-                        <marker date="1492750829000" expanded="true" signature="381:462" ph="..." />
-                        <marker date="1492750829000" expanded="true" signature="516:967" ph="..." />
-                      </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="_notice_detail.html.erb" pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/app/views/components/card/_notice_detail.html.erb">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="133">
-                      <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
                       <folding />
                     </state>
                   </provider>
@@ -197,8 +184,8 @@
               <file leaf-file-name="parser.scss" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/parser.scss">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="1254">
-                      <caret line="66" column="36" selection-start-line="66" selection-start-column="2" selection-end-line="66" selection-end-column="36" />
+                    <state relative-caret-position="170">
+                      <caret line="81" column="3" selection-start-line="81" selection-start-column="3" selection-end-line="81" selection-end-column="3" />
                       <folding />
                     </state>
                   </provider>
@@ -233,7 +220,7 @@
           <file leaf-file-name="parsers_controller.rb" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/controllers/parsers_controller.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="285">
+                <state relative-caret-position="323">
                   <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
                   <folding />
                 </state>
@@ -275,11 +262,9 @@
         <option value="$PROJECT_DIR$/app/views/classrooms/_eclass_info.html.erb" />
         <option value="$PROJECT_DIR$/app/views/presenters/content_detail.html.erb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/classroom.scss" />
-        <option value="$PROJECT_DIR$/app/views/components/card/_content_detail.html.erb" />
         <option value="$PROJECT_DIR$/app/views/components/card/_content_list.html.erb" />
         <option value="$PROJECT_DIR$/app/views/components/card/_professor.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/timemachine_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/components/card/_notice_detail.html.erb" />
         <option value="$PROJECT_DIR$/app/views/presenters/notice_detail.html.erb" />
         <option value="$PROJECT_DIR$/app/views/timemachine/index.html.erb" />
         <option value="$PROJECT_DIR$/app/views/components/card/_notice.html.erb" />
@@ -296,7 +281,6 @@
         <option value="$PROJECT_DIR$/app/views/components/card/_course_info.html.erb" />
         <option value="$PROJECT_DIR$/app/views/presenters/share_detail.html.erb" />
         <option value="$PROJECT_DIR$/app/views/presenters/share_file.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/components/card/_share_detail.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/classrooms_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/components/card/_share_list.html.erb" />
         <option value="$PROJECT_DIR$/app/views/components/card/_notice_list.html.erb" />
@@ -320,6 +304,9 @@
         <option value="$PROJECT_DIR$/app/assets/stylesheets/parser.scss" />
         <option value="$PROJECT_DIR$/app/views/parsers/index.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/parsers_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/components/card/_share_detail.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/components/card/_notice_detail.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/components/card/_content_detail.html.erb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/application.scss" />
       </list>
     </option>
@@ -1026,12 +1013,12 @@
       <workItem from="1492496841504" duration="2863000" />
       <workItem from="1492656607479" duration="414000" />
       <workItem from="1492679191724" duration="570000" />
-      <workItem from="1492745539201" duration="11666000" />
+      <workItem from="1492745539201" duration="12166000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="176635000" />
+    <option name="totallyTimeSpent" value="177135000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1200" extended-state="0" />
@@ -1173,14 +1160,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/components/card/_content_detail.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="47" column="18" selection-start-line="47" selection-start-column="18" selection-end-line="47" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/presenters/content_file.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1213,26 +1192,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/components/card/_notice_list.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="10" column="62" selection-start-line="10" selection-start-column="62" selection-end-line="10" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/components/card/_share_list.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
           <caret line="12" column="23" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/components/card/_notice_detail.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
           <folding />
         </state>
       </provider>
@@ -1308,33 +1271,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/components/card/_share_detail.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="20" column="6" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
-          <folding>
-            <marker date="1492750829000" expanded="true" signature="20:983" ph="..." />
-            <marker date="1492750829000" expanded="true" signature="56:976" ph="..." />
-            <marker date="1492750829000" expanded="true" signature="97:486" ph="..." />
-            <marker date="1492750829000" expanded="true" signature="346:475" ph="..." />
-            <marker date="1492750829000" expanded="true" signature="381:462" ph="..." />
-            <marker date="1492750829000" expanded="true" signature="516:967" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/classrooms/eclass.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
           <caret line="25" column="11" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/components/card/_professor.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="14" selection-end-column="18" />
           <folding />
         </state>
       </provider>
@@ -1469,16 +1409,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/parsers_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
+        <state relative-caret-position="323">
           <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/parser.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1254">
-          <caret line="66" column="36" selection-start-line="66" selection-start-column="2" selection-end-line="66" selection-end-column="36" />
           <folding />
         </state>
       </provider>
@@ -1491,10 +1423,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/components/card/_notice_list.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="10" column="62" selection-start-line="10" selection-start-column="62" selection-end-line="10" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/components/card/_notice_detail.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="13" column="277" selection-start-line="13" selection-start-column="277" selection-end-line="13" selection-end-column="277" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/components/card/_professor.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="14" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/components/card/_content_detail.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="22" column="275" selection-start-line="22" selection-start-column="275" selection-end-line="22" selection-end-column="275" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/components/card/_share_detail.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="30" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="27" column="24" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
+        <state relative-caret-position="196">
+          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/parser.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="81" column="3" selection-start-line="81" selection-start-column="3" selection-end-line="81" selection-end-column="3" />
           <folding />
         </state>
       </provider>

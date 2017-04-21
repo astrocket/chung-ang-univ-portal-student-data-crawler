@@ -11,7 +11,7 @@
     <div class="card-action">
       <% if share_detail[8].present? %>
           <% share_detail[8].split('|').each do |file| %>
-              <%= link_to "#{file.split('*')[1]} (#{(file.split('*')[2].to_f / 1.0.megabyte).round(2)}mb)", share_file_url(:share_filename => file.split('*')[1], :share_filesysname => file.split('*')[0], :share_filetype => file.split('*')[3]), class: 'collection-item' %>
+              <%= link_to "#{file.split('*')[1]} (#{(file.split('*')[2].to_f / 1.0.megabyte).round(2)}mb)", share_file_url(:share_filename => file.split('*')[1], :share_filesysname => file.split('*')[0], :share_filetype => file.split('*')[3]), class: 'collection-item' %><br>
           <% end %>
       <% else %>
           첨부파일없음

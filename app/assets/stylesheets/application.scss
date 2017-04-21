@@ -29,11 +29,17 @@
 }
 
 .card-action {
-  display: flex;
-  justify-content: flex-end;
+
 }
 
 .card-action a {
   margin-left: 20px;
   margin-right: 0px !important;
+}
+
+@media (min-width: 768px) {
+  .card-action {
+    display: flex;
+    justify-content: flex-end;
+  }
 }

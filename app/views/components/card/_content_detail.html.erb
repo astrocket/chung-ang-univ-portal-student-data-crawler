@@ -20,7 +20,7 @@
     </div>
     <div class="card-action">
       <% content_unit[7].split('|').each do |file| %>
-          <%= link_to "#{file.split('*')[1]} (#{(file.split('*')[2].to_f / 1.0.megabyte).round(2)}mb)", notice_file_url(:notice_filename => file.split('*')[1], :notice_filesysname => file.split('*')[0], :notice_filetype => file.split('*')[3]), class: 'collection-item' %>
+          <%= link_to "#{file.split('*')[1]} (#{(file.split('*')[2].to_f / 1.0.megabyte).round(2)}mb)", notice_file_url(:notice_filename => file.split('*')[1], :notice_filesysname => file.split('*')[0], :notice_filetype => file.split('*')[3]), class: 'collection-item' %><br>
       <% end %>
     </div>
   </div>
