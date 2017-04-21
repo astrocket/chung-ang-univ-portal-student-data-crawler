@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="009f3d9c-d173-4b91-bc40-eb6447db2381" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/environment.rb" afterPath="$PROJECT_DIR$/config/environment.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/environments/production.rb" afterPath="$PROJECT_DIR$/config/environments/production.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/cable.yml" afterPath="$PROJECT_DIR$/config/cable.yml" />
     </list>
     <ignored path="cau_parser.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -23,7 +22,7 @@
     <favorites_list name="cau_parser" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="vertical" split-proportion="0.8916914">
+    <splitter split-orientation="vertical" split-proportion="0.5140772">
       <split-first>
         <splitter split-orientation="vertical" split-proportion="0.10099338">
           <split-first>
@@ -152,11 +151,21 @@
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="production.rb" pinned="false" current-in-tab="true">
+              <file leaf-file-name="production.rb" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/config/environments/production.rb">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="589">
+                    <state relative-caret-position="627">
                       <caret line="43" column="96" selection-start-line="43" selection-start-column="96" selection-end-line="43" selection-end-column="96" />
+                      <folding />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="cable.yml" pinned="false" current-in-tab="true">
+                <entry file="file://$PROJECT_DIR$/config/cable.yml">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="152">
+                      <caret line="8" column="88" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="88" />
                       <folding />
                     </state>
                   </provider>
@@ -187,16 +196,6 @@
                   <provider selected="true" editor-type-id="text-editor">
                     <state relative-caret-position="171">
                       <caret line="9" column="67" selection-start-line="9" selection-start-column="67" selection-end-line="9" selection-end-column="67" />
-                      <folding />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="parser.scss" pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/parser.scss">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="298">
-                      <caret line="83" column="0" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
                       <folding />
                     </state>
                   </provider>
@@ -379,9 +378,9 @@
         <option value="$PROJECT_DIR$/app/views/messages/_message.html.erb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/Gemfile" />
-        <option value="$PROJECT_DIR$/config/cable.yml" />
         <option value="$PROJECT_DIR$/config/environment.rb" />
         <option value="$PROJECT_DIR$/config/environments/production.rb" />
+        <option value="$PROJECT_DIR$/config/cable.yml" />
       </list>
     </option>
   </component>
@@ -1212,16 +1211,16 @@
       <workItem from="1492656607479" duration="414000" />
       <workItem from="1492679191724" duration="570000" />
       <workItem from="1492745539201" duration="12427000" />
-      <workItem from="1492761055295" duration="4355000" />
+      <workItem from="1492761055295" duration="4645000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="181751000" />
+    <option name="totallyTimeSpent" value="182041000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1200" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15601704" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1231,7 +1230,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18079585" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12543252" sideWeight="0.4978701" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17041522" sideWeight="0.4978701" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1643,14 +1642,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/cable.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/environment.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
@@ -1669,8 +1660,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/environments/production.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
+        <state relative-caret-position="627">
           <caret line="43" column="96" selection-start-line="43" selection-start-column="96" selection-end-line="43" selection-end-column="96" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/cable.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" column="88" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="88" />
           <folding />
         </state>
       </provider>
