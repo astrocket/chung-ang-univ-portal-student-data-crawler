@@ -1,0 +1,391 @@
+ko:
+  date:
+    formats:
+      # Use the strftime parameters for formats.
+      # When no format has been given, it uses default.
+      # You can provide other formats here if you like!
+      default: "%Y-%m-%d"
+      short: "%b %d"
+      long: "%B %d, %Y"
+
+    #day_names: [Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday]
+    day_name: [일요일, 월요일, 화요일, 수요일, 목요일, 금요일, 토요일]
+    abbr_day_names: [일,월,화,수,목,금,토]
+
+    # Don't forget the nil at the beginning; there's no such thing as a 0th month
+    month_names: [~, 1월, 2월, 3월, 4월, 5월, 6월, 7월, 8월, 9월, 10월, 11월, 12월]
+    abbr_month_names: [~, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]
+    # Used in date_select and datetime_select.
+    order:
+      - year
+      - month
+      - day
+
+  time:
+    formats:
+      default: "%a, %d %b %Y %H:%M:%S %z"
+      short: "%d %b %H:%M"
+      long: "%B %d, %Y %H:%M"
+    am: "am"
+    pm: "pm"
+
+# Used in array.to_sentence.
+  support:
+    array:
+      words_connector: ", "
+      two_words_connector: " and "
+      last_word_connector: ", and "
+  number:
+    # Used in NumberHelper.number_to_delimited()
+    # These are also the defaults for 'currency', 'percentage', 'precision', and 'human'
+    format:
+      # Sets the separator between the units, for more precision (e.g. 1.0 / 2.0 == 0.5)
+      separator: "."
+      # Delimits thousands (e.g. 1,000,000 is a million) (always in groups of three)
+      delimiter: ","
+      # Number of decimals, behind the separator (the number 1 with a precision of 2 gives: 1.00)
+      precision: 3
+      # If set to true, precision will mean the number of significant digits instead
+      # of the number of decimal digits (1234 with precision 2 becomes 1200, 1.23543 becomes 1.2)
+      significant: false
+      # If set, the zeros after the decimal separator will always be stripped (eg.: 1.200 will be 1.2)
+      strip_insignificant_zeros: false
+
+    # Used in NumberHelper.number_to_currency()
+    currency:
+      format:
+        # Where is the currency sign? %u is the currency unit, %n the number (default: $5.00)
+        format: "%u%n"
+        unit: "$"
+        # These five are to override number.format and are optional
+        separator: "."
+        delimiter: ","
+        precision: 2
+        significant: false
+        strip_insignificant_zeros: false
+
+    # Used in NumberHelper.number_to_percentage()
+    percentage:
+      format:
+        # These five are to override number.format and are optional
+        # separator:
+        delimiter: ""
+        # precision:
+        # significant: false
+        # strip_insignificant_zeros: false
+        format: "%n%"
+
+    # Used in NumberHelper.number_to_rounded()
+    precision:
+      format:
+        # These five are to override number.format and are optional
+        # separator:
+        delimiter: ""
+        # precision:
+        # significant: false
+        # strip_insignificant_zeros: false
+
+    # Used in NumberHelper.number_to_human_size() and NumberHelper.number_to_human()
+    human:
+      format:
+        # These five are to override number.format and are optional
+        # separator:
+        delimiter: ""
+        precision: 3
+        significant: true
+        strip_insignificant_zeros: true
+      # Used in number_to_human_size()
+      storage_units:
+        # Storage units output formatting.
+        # %u is the storage unit, %n is the number (default: 2 MB)
+        format: "%n %u"
+        units:
+          byte:
+            one:   "Byte"
+            other: "Bytes"
+          kb: "KB"
+          mb: "MB"
+          gb: "GB"
+          tb: "TB"
+      # Used in NumberHelper.number_to_human()
+      decimal_units:
+        format: "%n %u"
+        # Decimal units output formatting
+        # By default we will only quantify some of the exponents
+        # but the commented ones might be defined or overridden
+        # by the user.
+        units:
+          # femto: Quadrillionth
+          # pico: Trillionth
+          # nano: Billionth
+          # micro: Millionth
+          # mili: Thousandth
+          # centi: Hundredth
+          # deci: Tenth
+          unit: ""
+          # ten:
+          #   one: Ten
+          #   other: Tens
+          # hundred: Hundred
+          thousand: Thousand
+          million: Million
+          billion: Billion
+          trillion: Trillion
+          quadrillion: Quadrillion
+
+#datatime 해석
+  datetime:
+    distance_in_words:
+      half_a_minute: "30초"
+      less_than_x_seconds:
+        one:   "1초 미만"
+        other: "%{count}초 미만"
+      x_seconds:
+        one:   "1초"
+        other: "%{count}초"
+      less_than_x_minutes:
+        one:   "1분 미만"
+        other: "%{count}분 미만"
+      x_minutes:
+        one:   "1분"
+        other: "%{count}분"
+      about_x_hours:
+        one:   "약 1시간"
+        other: "약 %{count}시간"
+      x_days:
+        one:   "하루"
+        other: "%{count}일"
+      about_x_months:
+        one:   "약 1개월"
+        other: "약 %{count}개월"
+      x_months:
+        one:   "1개월"
+        other: "%{count}개월"
+      about_x_years:
+        one:   "약 1년"
+        other: "약 %{count}년"
+      over_x_years:
+        one:   "1년 이상"
+        other: "%{count}년 이상"
+      almost_x_years:
+        one:   "거의 1년"
+        other: "거의 %{count}년"
+    prompts:
+      year:   "년"
+      month:  "월"
+      day:    "일"
+      hour:   "시"
+      minute: "분"
+      second: "초"
+
+  helpers:
+    select:
+      # Default value for :prompt => true in FormOptionsHelper
+      prompt: "Please select"
+
+    # Default translation keys for submit and button FormHelper
+    submit:
+      create: 'Create %{model}'
+      update: 'Update %{model}'
+      submit: 'Save %{model}'
+
+  # activerecord 해석
+  #attributes:
+    #created_at: "Created at"
+    #updated_at: "Updated at"
+
+  # Default error messages
+  errors:
+    messages:
+      taken: "이 이미 존재합니다."
+
+  # Active Record models configuration
+  activerecord:
+    errors:
+      messages:
+        record_invalid: "Validation failed: %{errors}"
+        restrict_dependent_destroy:
+          one: "Cannot delete record because a dependent %{record} exists"
+          many: "Cannot delete record because dependent %{record} exist"
+        # Append your own errors here or at the model/attributes scope.
+
+      # You can define own errors for models or model attributes.
+      # The values :model, :attribute and :value are always available for interpolation.
+      #
+      # For example,
+      #   models:
+      #     user:
+      #       blank: "This is a custom blank message for %{model}: %{attribute}"
+      #       attributes:
+      #         login:
+      #           blank: "This is a custom blank message for User login"
+      # Will define custom blank validation message for User model and
+      # custom blank validation message for login attribute of User model.
+      #models:
+
+    # Translate model names. Used in Model.human_name().
+    #models:
+      # For example,
+      #   user: "Dude"
+      # will translate User model name to "Dude"
+
+    # Translate model attribute names. Used in Model.human_attribute_name(attribute).
+    #attributes:
+      # For example,
+      #   user:
+      #     login: "Handle"
+      # will translate User attribute "login" as "Handle"
+  will_paginate:
+    previous_label: "이전"
+    next_label: "다음"
+
+  admin:
+    js:
+      true: True
+      false: False
+      is_present: Is present
+      is_blank: Is blank
+      date: Date ...
+      between_and_: Between ... and ...
+      today: Today
+      yesterday: Yesterday
+      this_week: This week
+      last_week: Last week
+      number: Number ...
+      contains: Contains
+      is_exactly: Is exactly
+      starts_with: Starts with
+      ends_with: Ends with
+      too_many_objects: "검색 기능을 이용하세요, 데이터가 너무 많습니다"
+      no_objects: "결과 없음"
+    loading: "로딩중..."
+    toggle_navigation: Toggle navigation
+    home:
+      name: "홈"
+    pagination:
+      previous: "&laquo; 이전"
+      next: "다음 &raquo;"
+      truncate: "더보기…"
+    misc:
+      search: "검색어 입력"
+      filter: "검색어로 필터링하기"
+      refresh: "새로고침"
+      show_all: "전체 보기"
+      add_filter: "필터 적용하기"
+      bulk_menu_title: "선택한 것들 어떻게 할지?"
+      remove: "삭제하기"
+      add_new: "새로 만들기"
+      chosen: "%{name} 선택"
+      chose_all: "모두 선택하기"
+      clear_all: "다시 초기화하기"
+      up: "위로"
+      down: "아래로"
+      navigation: "관리 리스트"
+      navigation_static_label: "Links"
+      log_out: "로그아웃"
+      ago: "전"
+      more: "%{models_name}를 %{count}개 추가하기"
+    flash:
+      successful: "%{name} 에 대한 %{action} 가 성공했습니다."
+      error: "%{name} 에 대한 %{action} 에서 에러가 발생했습니다."
+      noaction: "아무일도 일어나지 않았습니다."
+      model_not_found: "Model '%{model}' could not be found"
+      object_not_found: "%{model} with id '%{id}' could not be found"
+    table_headers:
+      model_name: "모델명"
+      last_created: "최근 수정일"
+      records: "누적 개수"
+      username: "User"
+      changes: "Changes"
+      created_at: "Date/Time"
+      item: "Item"
+      message: "Message"
+    actions:
+      dashboard:
+        title: "사이트 관리하기"
+        menu: "관리자페이지"
+        breadcrumb: "관리자페이지"
+      index:
+        title: "%{model_label_plural} 목록"
+        menu: "목록"
+        breadcrumb: "%{model_label_plural}"
+      show:
+        title: "%{model_label} '%{object_label}' 보기"
+        menu: "보기"
+        breadcrumb: "%{object_label}"
+      show_in_app:
+        menu: "실제 화면 보기"
+      new:
+        title: "%{model_label} 새로만들기"
+        menu: "새로만들기"
+        breadcrumb: "새로만들기"
+        link: "%{model_label} 새로만들기"
+        done: "생성됨"
+      edit:
+        title: "%{model_label} '%{object_label}' 수정하기"
+        menu: "수정하기"
+        breadcrumb: "수정하기"
+        link: "%{model_label} 수정하기"
+        done: "수정됨"
+      delete:
+        title: "%{model_label} '%{object_label}' 삭제하기"
+        menu: "삭제하기"
+        breadcrumb: "삭제하기"
+        link: "'%{object_label}' 삭제하기"
+        done: "삭제됨"
+      bulk_delete:
+        title: "%{model_label_plural} 삭제하기"
+        menu: "전부 삭제하기"
+        breadcrumb: "전부 삭제하기"
+        bulk_link: "선택한 %{model_label_plural} 전부 삭제하기"
+      export:
+        title: "%{model_label_plural} 내보내기"
+        menu: "내보내기"
+        breadcrumb: "내보내기"
+        link: "%{model_label_plural} 내보내기"
+        bulk_link: "선택한 %{model_label_plural} 전부 내보내기"
+        done: "내보내기 성공"
+      history_index:
+        title: "History for %{model_label_plural}"
+        menu: "History"
+        breadcrumb: "History"
+      history_show:
+        title: "History for %{model_label} '%{object_label}'"
+        menu: "History"
+        breadcrumb: "History"
+    form:
+      cancel: "취소"
+      basic_info: "기본정보"
+      required: "필수 입력사항"
+      optional: "옵션 입력사항"
+      one_char: "단일 문자로 입력"
+      char_length_up_to: "최대길이 : "
+      char_length_of: "최소길이 : "
+      save: "저장하기"
+      save_and_add_another: "저장 후 새로 만들기"
+      save_and_edit: "저장 후 수정하기"
+      all_of_the_following_related_items_will_be_deleted: "와 연관 된 아래의 항목들이 함께 제거될 예정입니다 :"
+      are_you_sure_you_want_to_delete_the_object: "정말로 %{model_name} 를 삭제하시겠습니까? 복구 할 수 없습니다."
+      confirmation: "네, 확실합니다."
+      bulk_delete: "다음 항목들이 모두 제거될 예정입니다. 수업의 경우 관련 예약과 게시글들이 전부 삭제되며, 게시글이나 상품의 경우 댓글까지 전부 삭제 됩니다."
+      new_model: "%{name} (new)"
+    export:
+      confirmation: "%{name} 양식 으로 내보내기"
+      select: "내보낼 항목들 선택하기"
+      select_all_fields: "모든 항목 선택하기"
+      fields_from: "%{name}의 항목들"
+      fields_from_associated: "%{name}과 관련된 항목들"
+      display: "%{name}: %{type} 보여주기"
+      options_for: "%{name}로 내보내기 옵션들"
+      empty_value_for_associated_objects: "<empty>"
+      click_to_reverse_selection: '클릭해서 선택된 것들 뒤집기'
+      csv:
+        header_for_root_methods: "%{name}" # 'model' is available
+        header_for_association_methods: "%{name} [%{association}]"
+        encoding_to: "인코딩"
+        encoding_to_help: "인코딩 방식을 선택하세요. 기존 데이터의 인코딩 값(%{name})을 그대로 가져오려면 선택하지 않으셔도 됩니다."
+        skip_header: "헤더 생략하기"
+        skip_header_help: "헤더를 생략하고 내보내려면 체크 박스를 선택하세요 (항목들에 대한 설명들이 제거 됩니다)"
+        default_col_sep: ","
+        col_sep: "칼럼 구분자 선택하기"
+        col_sep_help: "기본설정('%{value}')으로 두려면 선택하지 않으셔도 됩니다. " # value is default_col_sep

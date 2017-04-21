@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'devise'
+gem 'rails_admin'
 gem 'rolify'
 gem 'toastrjs-rails'
 gem 'httparty'

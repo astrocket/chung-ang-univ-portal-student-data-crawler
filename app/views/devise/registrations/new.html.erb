@@ -5,6 +5,10 @@
             <%= devise_error_messages! %>
 
             <div class="field">
+              <%= f.text_field :name, autofocus: true, :required => true, placeholder: '이름' %>
+            </div>
+
+            <div class="field">
               <%= f.email_field :email, autofocus: true, placeholder: '메일주소' %>
             </div>
 

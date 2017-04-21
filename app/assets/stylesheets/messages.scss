@@ -1,0 +1,35 @@
+// Place all the styles related to the Messages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.chat-frame {
+  padding-top: 20px;
+}
+
+.message-box {
+  border: 1px solid #ccc;
+  padding: 5px;
+  height: 60vh;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+#messages {
+  height: 25em;
+  padding: 0;
+  margin-top: 0;
+  margin-left: 0;
+  list-style-type: none;
+}
+
+#messages li {
+  margin: 2px;
+}
+
+#new_message {
+  input[type=submit]{
+    display: none;
+  }
+}
+
+#new_user {
+  margin-bottom: 2em;
+}

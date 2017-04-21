@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :messages
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
 
   get 'timemachine/index'

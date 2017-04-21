@@ -4,12 +4,12 @@
   </a>
   <ul>
     <li class="waves-effect waves-light"><a href="#!"><i class="fa fa-code"></i> Astro</a></li>
-    <li class="waves-effect waves-light"><a href="#!"><i class="material-icons">format_quote</i></a></li>
-    <li class="waves-effect waves-light"><a href="#!"><i class="material-icons">쪽지함</i></a></li>
+    <li class="waves-effect waves-light"><a href="/">홈으로</a></li>
     <% if user_signed_in? %>
         <li class="waves-effect waves-light"><%= link_to '로그아웃', destroy_user_session_path, method: 'delete' %></li>
     <% else %>
         <li class="waves-effect waves-light"><%= link_to '로그인', new_user_session_path %></li>
     <% end %>
+    <li class="waves-effect waves-light"><%= link_to "채팅하기", messages_path, class: 'btn btn-outline-primary' %></li>
   </ul>
 </div>

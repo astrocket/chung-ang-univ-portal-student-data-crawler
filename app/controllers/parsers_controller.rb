@@ -7,6 +7,15 @@ class ParsersController < ParsingController
   def show
     student_id = params[:student]
 
+    if user_signed_in?
+      unless current_user.has_role? :admin
+        if current_user.sign_in_count > 2 and current_user.status == false
+          flash[:toast] = '두번째 부터는 관리자의 승인을 받아야 사용가능합니다.'
+          redirect_to url_for(:controller => :messages, :action => :index)
+        end
+      end
+    end
+
     if current_user.has_role? :admin
       student = student_id
     else
@@ -14,7 +23,7 @@ class ParsersController < ParsingController
         if current_user.student == student_id
           student = current_user.student
         else
-          flash[:toast] = '내가 처음 가입할 때 입력한 학번이 아닙니다'
+          flash[:toast] = '내 학번이 아닙니다'
           redirect_to '/'
         end
       else
@@ -27,7 +36,7 @@ class ParsersController < ParsingController
     @student_data = xml_map_chunk_extraction_job(
         map_chunk = get_user_data(student), #개인정보 가져오기
         key_array = %w(kornm regno chanm engnm gen sustnm mjnm probshyr advyear advshtm stdno campcd ),
-                    #0한국이름 1소속 2한자명 3영문명 4성별 5소속단과대 6전공 7현재학년 8최근등록년도 9최근등록학기 10학번 11캠퍼스
+        #0한국이름 1소속 2한자명 3영문명 4성별 5소속단과대 6전공 7현재학년 8최근등록년도 9최근등록학기 10학번 11캠퍼스
         filter_array = %w(msgCode),
         false #하나의 어레이만 필요한거는 false로 해놓고 쌓아놓는다
     )
