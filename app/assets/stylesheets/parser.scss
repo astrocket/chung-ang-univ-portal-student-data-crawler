@@ -23,6 +23,7 @@
 
 .id-form form .input-field {
   width: 100%;
+  display: flex;
 }
 
 .id-form form .input-field label i {
@@ -31,6 +32,16 @@
 
 .id-form form .input-field label.active i {
   color: #000;
+}
+
+.id-form form .input-field button {
+   height: 100%;
+ }
+
+.id-form form .input-field button i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #id-field {
