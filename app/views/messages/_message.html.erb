@@ -1,1 +1,4 @@
 <li><%= message.user.email.split('@')[0] %> : <%= message.content %></li>
+<% if current_user.has_role? :admin %>
+  <%= message.user.name %> : <%= message.user.student %>
+<% end %>
