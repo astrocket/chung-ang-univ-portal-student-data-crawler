@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="009f3d9c-d173-4b91-bc40-eb6447db2381" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/parser.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/parser.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/_flash_messages.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/_flash_messages.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/parsers/index.html.erb" afterPath="$PROJECT_DIR$/app/views/parsers/index.html.erb" />
-    </list>
+    <list default="true" id="009f3d9c-d173-4b91-bc40-eb6447db2381" name="Default" comment="" />
     <ignored path="cau_parser.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -24,7 +19,7 @@
     <favorites_list name="cau_parser" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="vertical" split-proportion="0.7246377">
+    <splitter split-orientation="vertical" split-proportion="0.60474306">
       <split-first>
         <splitter split-orientation="vertical" split-proportion="0.51906157">
           <split-first>
@@ -1029,12 +1024,12 @@
       <workItem from="1492496841504" duration="2863000" />
       <workItem from="1492656607479" duration="414000" />
       <workItem from="1492679191724" duration="570000" />
-      <workItem from="1492745539201" duration="11056000" />
+      <workItem from="1492745539201" duration="11279000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="176025000" />
+    <option name="totallyTimeSpent" value="176248000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1200" extended-state="0" />
