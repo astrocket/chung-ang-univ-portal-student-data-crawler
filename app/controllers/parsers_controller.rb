@@ -16,9 +16,22 @@ class ParsersController < ParsingController
       end
     end
 
+    @student_data = xml_map_chunk_extraction_job(
+        map_chunk = get_user_data(params[:student]), #개인정보 가져오기
+        key_array = %w(kornm regno chanm engnm gen sustnm mjnm probshyr advyear advshtm stdno campcd ),
+        #0한국이름 1소속 2한자명 3영문명 4성별 5소속단과대 6전공 7현재학년 8최근등록년도 9최근등록학기 10학번 11캠퍼스
+        filter_array = %w(msgCode),
+        false #하나의 어레이만 필요한거는 false로 해놓고 쌓아놓는다
+    )
+
     if current_user.has_role? :admin
       student = student_id
     else
+      if current_user.name != @student_data[0]
+        flash[:toast] = '내 이름과 일치하는 학번이 아닙니다'
+        redirect_to '/'
+      end
+
       if current_user.student.present?
         if current_user.student == student_id
           student = current_user.student
@@ -33,13 +46,7 @@ class ParsersController < ParsingController
       end
     end
 
-    @student_data = xml_map_chunk_extraction_job(
-        map_chunk = get_user_data(student), #개인정보 가져오기
-        key_array = %w(kornm regno chanm engnm gen sustnm mjnm probshyr advyear advshtm stdno campcd ),
-        #0한국이름 1소속 2한자명 3영문명 4성별 5소속단과대 6전공 7현재학년 8최근등록년도 9최근등록학기 10학번 11캠퍼스
-        filter_array = %w(msgCode),
-        false #하나의 어레이만 필요한거는 false로 해놓고 쌓아놓는다
-    )
+
     @course_list = get_course_list(student) #수강 과목 리스트 가져오기 이거 년도/학기 별로 가져올 수 있게 코드 수정 필요
     @all_course_notice_list = xml_map_chunk_extraction_job(
         map_chunk = get_all_course_notice_list(student, 100), #eclass 과목 별 notice 리스트의 데이터 map chunk 를 가져온다. 맨 마지막 숫자를 조정해서 불러오는 공지사항의 개수 조절 가능
