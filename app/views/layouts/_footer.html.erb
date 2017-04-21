@@ -4,24 +4,26 @@
   </a>
   <ul>
     <li class="waves-effect waves-light">
-      <% if current_user.has_role? :admin %>
-        <li class="waves-effect waves-light"><a href="/admin">관리자</a></li>
+      <% if user_signed_in? and current_user.has_role? :admin %>
+        <a href="/admin">관리자</a>
       <% else %>
-        <li class="waves-effect waves-light"><a href="www.cau.ac.kr">Astro</a></li>
+        <a href="www.cau.ac.kr">Astro</a>
       <% end %>
     </li>
     <li class="waves-effect waves-light">
       <% if user_signed_in? %>
-        <li class="waves-effect waves-light"><a href="/parsers?student=<%= current_user.student %>"></a></li>
+        <a href="/parsers?student=<%= current_user.student %>">홈</a>
       <% else %>
-        <li class="waves-effect waves-light"><%= link_to '로그인', new_user_session_path %></li>
+        <a href="/">홈</a>
       <% end %>
     </li>
+    <li class="waves-effect waves-light">
       <% if user_signed_in? %>
-        <li class="waves-effect waves-light"><%= link_to '로그아웃', destroy_user_session_path, method: 'delete' %></li>
+        <%= link_to '로그아웃', destroy_user_session_path, method: 'delete' %>
       <% else %>
-        <li class="waves-effect waves-light"><%= link_to '로그인', new_user_session_path %></li>
+        <%= link_to '로그인', new_user_session_path %>
       <% end %>
+    </li>
     <li class="waves-effect waves-light"><%= link_to '채팅', messages_path, class: 'btn btn-outline-primary' %></li>
   </ul>
 </div>

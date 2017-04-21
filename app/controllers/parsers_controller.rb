@@ -28,8 +28,8 @@ class ParsersController < ParsingController
       student = student_id
     else
       if current_user.name != @student_data[0]
-        flash[:toast] = '내 이름과 일치하는 학번이 아닙니다'
-        redirect_to '/'
+        flash[:toast] = '내 이름과 일치하는 학번이 아닙니다. 이름이 본인명이 아니라면 이름을 변경하세요'
+        redirect_to edit_user_registration_path
       end
 
       if current_user.student.present?
