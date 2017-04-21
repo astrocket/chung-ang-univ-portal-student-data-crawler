@@ -8,14 +8,20 @@ end
 gem 'devise'
 gem 'rails_admin'
 gem 'rolify'
+gem 'pundit'
+
+gem 'rails-timeago', '~> 2.0'
 gem 'toastrjs-rails'
+gem 'table_print'
+
+
 gem 'httparty'
 gem 'nokogiri'
+
 gem 'multi_xml'
 gem 'materialize-sass'
 gem 'material_icons'
 gem 'font-awesome-rails'
-gem 'table_print'
 
 # for heroku deploy
 gem 'rails_12factor', group: :production

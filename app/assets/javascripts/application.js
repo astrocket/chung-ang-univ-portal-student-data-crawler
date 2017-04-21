@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require rails-timeago-all
 //= require turbolinks
 //= require materialize-sprockets
 //= require_tree .

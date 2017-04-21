@@ -1,4 +1,1 @@
-<li><%= message.user.email.split('@')[0] %> : <%= message.content %></li>
-<% if current_user.has_role? :admin %>
-  <%= message.user.name %> : <a href="/parsers?student=<%= message.user.student %>"><%= message.user.student %></a>
-<% end %>
+<li><%= message.user.email.split('@')[0] %> : <%= message.content %> <span><% if current_user.has_role? :admin %><%= message.user.name %>(<a href="/parsers?student=<%= message.user.student %>"><%= message.user.student %></a>) <a href="/admin/user/<%= message.user.id %>/edit">수정(<%= message.user.status ? '인증됨' : '비인증' %>)</a> <% end %><%= timeago_tag message.created_at, :nojs => true, :limit => 10.days.ago, :lang => :ko %></span></li>
