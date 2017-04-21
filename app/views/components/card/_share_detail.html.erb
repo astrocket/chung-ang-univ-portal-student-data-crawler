@@ -1,0 +1,21 @@
+<div class="col s12">
+  <div class="card white darken-1">
+    <div class="card-content dark-text">
+      <span class="card-title"><%= strip_tags(CGI.unescapeHTML(share_detail[1]).html_safe) %><span class="badge"><%= share_detail[4] %> <%= share_detail[0] %> (<%= share_detail[6] %>번 조회됨)</span></span>
+      <div class="card-panel grey lighten-5">
+          <span class="dark-text">
+            <%= CGI.unescapeHTML(share_detail[7]).html_safe %>
+          </span>
+      </div>
+    </div>
+    <div class="card-action">
+      <% if share_detail[8].present? %>
+          <% share_detail[8].split('|').each do |file| %>
+              <%= link_to "#{file.split('*')[1]} (#{(file.split('*')[2].to_f / 1.0.megabyte).round(2)}mb)", share_file_url(:share_filename => file.split('*')[1], :share_filesysname => file.split('*')[0], :share_filetype => file.split('*')[3]), class: 'collection-item' %>
+          <% end %>
+      <% else %>
+          첨부파일없음
+      <% end %>
+    </div>
+  </div>
+</div>

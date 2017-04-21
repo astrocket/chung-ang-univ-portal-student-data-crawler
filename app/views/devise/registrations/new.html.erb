@@ -1,0 +1,28 @@
+<div class="main-frame">
+  <div class="login-form">
+      <div class="nav-wrapper white">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= devise_error_messages! %>
+
+            <div class="field">
+              <%= f.email_field :email, autofocus: true, placeholder: '메일주소' %>
+            </div>
+
+            <div class="field">
+              <%= f.password_field :password, autocomplete: "off", placeholder: '비밀번호(6자리 이상)' %>
+            </div>
+
+            <div class="field">
+              <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: '비밀번호재입력(6자리 이상)' %>
+            </div>
+
+            <div class="actions">
+              <%= f.submit "가입하기", class: 'btn right' %>
+            </div>
+        <% end %>
+
+        <%= render "devise/shared/links" %>
+
+      </div>
+  </div>
+</div>

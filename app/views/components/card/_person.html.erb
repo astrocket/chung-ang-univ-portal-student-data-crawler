@@ -1,21 +1,36 @@
 <div class="col s12">
   <ul class="collapsible" data-collapsible="accordion">
     <li>
-      <div class="collapsible-header profile-header"><span class="badge">자세히 보기</span><i class="fa <%= sex_icon(find_by_key(@student_data, 'gen')) %>" aria-hidden="true"></i><%= find_by_key(@student_data, 'kornm') %> 학우님</div>
+      <div class="collapsible-header profile-header">
+        <span class="badge">자세히 보기</span><i class="fa <%= sex_icon(@student_data[4]) %>" aria-hidden="true"></i><%= @student_data[0] %>
+        학우님
+      </div>
       <div class="card white darken-1 collapsible-body profile-body">
         <div class="card-content dark-text">
-          <span class="card-title"><%= find_by_key(@student_data, 'sustnm') %> <%= find_by_key(@student_data, 'mjnm') %> <%= find_by_key(@student_data, 'probshyr') %>학년 (<%= find_by_key(@student_data, 'stdno').split(//).first(4).join %>년도 입학)</span>
-          <p>
-            관리자계정용 정보<br>
-            이름 : <%= find_by_key(@student_data, 'kornm') %>(<%= find_by_key(@student_data, 'regno') %>)<br>
-            한문 : <%= find_by_key(@student_data, 'chanm') %><br>
-            영문 : <%= find_by_key(@student_data, 'engnm') %><br>
-            폰번 : <%= find_by_key(@response[1], 'cocthand') %><br>
-            메일 : <%= find_by_key(@response[1], 'email') %><br>
-            소속 : <%= find_by_key(@student_data, 'campcd')=='1' ? '서울캠퍼스' : '안성캠퍼스' %><br>
-            주소 : <%= find_by_key(@response[1], 'coctadr1') %> <%= find_by_key(@response[1], 'coctadr2') %><br>
-            본가 : <%= find_by_key(@response[1], 'parsadr1') %> <%= find_by_key(@response[1], 'parsadr2') %>
-          </p>
+          <span class="card-title"><%= @student_data[5] %> <%= @student_data[6] %> <%= @student_data[7] %>
+            학년 (<%= @student_data[10].split(//).first(4).join %>년도 입학)</span>
+          <% if current_user.has_role? :admin %>
+              <img src="http://cauid.cau.ac.kr/Symtra_Issue/IssueShowImage.asp?IDNo=<%= @student_data[10] %>" alt="">
+              <p>
+                관리자계정용 정보<br>
+                이름 : <%= @student_data[0] %>(<%= @student_data[1] %>)<br>
+                한문 : <%= @student_data[2] %><br>
+                영문 : <%= @student_data[3] %><br>
+                소속 : <%= @student_data[11]=='1' ? '서울캠퍼스' : '안성캠퍼스' %><%= @student_data %><br>
+                폰번 : <%= find_by_key(@response[1], 'cocthand') %><br>
+                메일 : <%= find_by_key(@response[1], 'email') %><br>
+                주소 : <%= find_by_key(@response[1], 'coctadr1') %> <%= find_by_key(@response[1], 'coctadr2') %><br>
+                본가 : <%= find_by_key(@response[1], 'parsadr1') %> <%= find_by_key(@response[1], 'parsadr2') %><br>
+                <% @response %>
+                <% @professor_data.each_with_index do |semester, index| %>
+                    <% if semester.present? %>
+                        <% semester.split('><').each do |unit| %>
+                            <%= index %> : <%= unit.split('=')[1] %><br>
+                        <% end %>
+                    <% end %>
+                <% end %>
+              </p>
+          <% end %>
         </div>
         <div class="card-action">
           <% unless params[:controller]=='parsers' %>

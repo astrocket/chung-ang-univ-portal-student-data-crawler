@@ -4,10 +4,14 @@
   </div>
   <div class="row">
     <div class="col s12">
-      <div class="card-panel teal">
-        <span class="white-text">
-          <%= @course_name %> 수업 미니 eClass
-        </span>
+      <div class="card white darken-1">
+        <div class="card-content dark-text">
+          <span class="card-title"><%= @eclass_info[0] %></span>
+          <p>수업 미니 eClass</p>
+        </div>
+        <div class="card-action">
+          <%= link_to '타임머신', timemachine_path(:professor => @eclass_professor[10]) %>
+        </div>
       </div>
     </div>
   </div>
@@ -24,8 +28,7 @@
   <div class="row">
     <%= render :partial => "#{component('card', 'content_list')}", :locals => {:content_list => @eclass_content_list} %>
   </div>
+  <div class="row">
+    <%= render :partial => "#{component('card', 'share_list')}", :locals => {:share_list => @eclass_share_list} %>
+  </div>
 </div>
-
-<%= @test %>
-<%= @eclass_professor[10] %>
-<%= link_to '타임머신', timemachine_path(:professor => @eclass_professor[10]) %>

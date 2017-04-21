@@ -54,8 +54,10 @@ class ParsingController < ApplicationController
           if repeating
             value_array[i][m] = find_by_key(map, key) #해당 키값의 밸류를 추출한다.
           else
-            unless find_by_key(map, key) == nil
+            if find_by_key(map, key) != nil
               value_array << find_by_key(map, key)
+            else
+              value_array << ''
             end
           end
         end
@@ -123,6 +125,18 @@ class ParsingController < ApplicationController
     http_xform_post_job(url, body)
   end
 
+  def get_share_detail(student, course_unit)
+    url = 'http://cautis.cau.ac.kr/LMS/LMS/prof/lec/pLmsLec070/getLectureBoard.do'
+    body = "<map><lectureNo value='#{course_unit[2]}'/><userId value='#{student}'/><boardNo value='#{course_unit[3]}'/><boardType value='DOWN'/><crudFlag value='V'/></map>"
+    http_xml_post_job(url, body)
+  end
+
+  def get_share_file(filename, filesysname, filetype)
+    url = 'http://cautis.cau.ac.kr/LMS/common/download.jsp'
+    body = "fileName=#{filename}&fileSysName=#{filesysname}&fileDir=subDirLMSLms"
+    http_xform_post_job(url, body)
+  end
+
   def get_eclass_students(student, course_number)
     url = 'http://cautis.cau.ac.kr/LMS/LMS/prof/lec/pLmsLec040/selectStudentList.do'
     body = "<map><lectureNo value='#{course_number}'/><userId value='#{student}'/><inqIndex value='inqAll'/><inqValue value=''/></map>"
@@ -141,21 +155,21 @@ class ParsingController < ApplicationController
     http_xml_post_job(url, body)
   end
 
-  def get_eclass_notice_list(student, course_number, how_many)
+  def get_eclass_notice_list(student, course_number, how_many) #공지사항
     url = 'http://cautis.cau.ac.kr/LMS/LMS/prof/lec/pLmsLec070/selectLectureBoardList.do'
     body = "<map><userId value='#{student}'/><lectureNo value='#{course_number}'/><boardType value='NOTICE'/><recordCountPerPage value='#{how_many}'/><pageIndex value='1'/><searchWord value=''/><searchType value='inqAll'/></map>"
     http_xml_post_job(url, body)
   end
 
-  def get_eclass_content_list(student, course_number)
+  def get_eclass_content_list(student, course_number) #과목콘텐츠
     url = 'http://cautis.cau.ac.kr/LMS/LMS/prof/lec/pLmsLec080/selectStudSchList.do'
     body = "<map><lectureNo value='#{course_number}'/><userId value='#{student}'/></map>"
     http_xml_post_job(url, body)
   end
 
-  def get_eclass_fileboard
-    url = ''
-    body = ""
+  def get_eclass_share_list(student, course_number, how_many)
+    url = 'http://cautis.cau.ac.kr/LMS/LMS/prof/lec/pLmsLec070/selectLectureBoardList.do'
+    body = "<map><userId value='#{student}'/><lectureNo value='#{course_number}'/><boardType value='DOWN'/><recordCountPerPage value='#{how_many}'/><pageIndex value='1'/><searchWord value=''/><searchType value='inqAll'/></map>"
     http_xml_post_job(url, body)
   end
 
@@ -174,6 +188,22 @@ class ParsingController < ApplicationController
 
     1.upto(8).each do |l|
       url[l] = "https://cautis.cau.ac.kr/TIS/std/uhs/sUhsPer001Tab0#{l}/selectList.do"
+      response[l] = http_xml_post_job(url[l], body)
+    end
+    response
+  end
+
+  def super_user_prof_data(student)
+    url = []
+    body = "<map><stdno value='#{student}'/></map>"
+    response = []
+
+    1.upto(9).each do |l|
+      url[l] = "http://cautis.cau.ac.kr/TIS/prof/uhj/pUhjSgd004Tab0#{l}/selectList.do"
+      response[l] = http_xml_post_job(url[l], body)
+    end
+    10.upto(14).each do |l|
+      url[l] = "http://cautis.cau.ac.kr/TIS/prof/uhj/pUhjSgd004Tab#{l}/selectList.do"
       response[l] = http_xml_post_job(url[l], body)
     end
     response

@@ -4,16 +4,14 @@
       <span class="card-title"><%= course[1] %></span>
       <p>
         교수명 : <%= course[2] %><br>
-        학부 : <%= course[4] %><br>
-        캠퍼스 : <%= course[5]=='1' ? '서울캠퍼스' : '안성캠퍼스' %>
+        학부 : <%= course[5] %><br>
+        캠퍼스 : <%= course[6]=='1' ? '서울캠퍼스' : '안성캠퍼스' %><br>
         수업정보<br>
         <%= course[3] %>
       </p>
     </div>
     <div class="card-action">
-      <%= link_to 'eClass', eclass_path(:student => '', :lectureno => course[0]), :course_name => course[1] %>
-      <a href="#">강의평가</a>
-      <a href="#">타임머신</a>
+      <%= link_to 'eClass', eclass_path(:student => @student, :lectureno => course[0]), :course_name => course[1] %>
     </div>
   </div>
 </div>

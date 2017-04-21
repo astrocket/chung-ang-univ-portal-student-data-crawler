@@ -56,9 +56,17 @@
   -webkit-overflow-scrolling: touch;
 }
 
+.login-form {
+  width: 90vw;
+}
+
 //only desktop
 @media (min-width: 768px) {
   .id-form {
+    width: 50vw;
+  }
+
+  .login-form {
     width: 50vw;
   }
 }
