@@ -20,7 +20,12 @@
 .profile-body {
   margin-top: 0px;
   overflow: scroll;
+  -webkit-overflow-scrolling: touch;
   max-height: 50vh;
+}
+
+.profile-body .card-content {
+  display: inline-block;
 }
 
 .card-action {
