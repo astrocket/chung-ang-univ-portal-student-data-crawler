@@ -7,6 +7,7 @@ end
 
 gem 'devise'
 gem 'rolify'
+gem 'toastrjs-rails'
 gem 'httparty'
 gem 'nokogiri'
 gem 'multi_xml'

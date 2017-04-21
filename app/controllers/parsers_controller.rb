@@ -5,7 +5,20 @@ class ParsersController < ParsingController
   end
 
   def show
-    student = params[:student]
+    student_id = params[:student]
+
+    if current_user.student.present?
+      if current_user.student == student_id
+        student = current_user.student
+      else
+        flash[:toast] = '내가 처음 가입할 때 입력한 학번이 아닙니다'
+        redirect_to '/'
+      end
+    else
+      current_user.student = student_id
+      current_user.save
+      student = current_user.student
+    end
 
     @student_data = xml_map_chunk_extraction_job(
         map_chunk = get_user_data(student), #개인정보 가져오기
