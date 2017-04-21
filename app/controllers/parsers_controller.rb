@@ -22,10 +22,11 @@ class ParsersController < ParsingController
         true
     )
 
-
-    #관리자 계정용 정보 !!!!!!! Pundit 으로 반드시 권한 확인 후 코드 실행시켜야 속도 문제 줄어듦
-    @response = super_user_data(student)
-    @professor_data = super_user_prof_data(student)
+    if current_user.has_role? :admin
+      #관리자 계정용 정보 !!!!!!! Pundit 으로 반드시 권한 확인 후 코드 실행시켜야 속도 문제 줄어듦
+      @response = super_user_data(student)
+      @professor_data = super_user_prof_data(student)
+    end
 
   end
 

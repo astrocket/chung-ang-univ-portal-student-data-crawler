@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users
+
   get 'timemachine/index'
 
   get 'presenters/notice_detail' ,    to: 'presenters#notice_detail', as: :notice_detail

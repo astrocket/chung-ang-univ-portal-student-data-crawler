@@ -19,9 +19,11 @@
     <%= render :partial => "#{component('card', 'professor')}", :locals => {:professor => @eclass_professor} %>
     <%= render :partial => 'eclass_info' %>
   </div>
-  <div class="row">
-    <%= render :partial => "#{component('card', 'people')}", :locals => {:people => @eclass_students} %>
-  </div>
+  <% if current_user.has_role? :admin %>
+      <div class="row">
+        <%= render :partial => "#{component('card', 'people')}", :locals => {:people => @eclass_students} %>
+      </div>
+  <% end %>
   <div class="row">
     <%= render :partial => "#{component('card', 'notice_list')}", :locals => {:notice_list => @eclass_notice_list} %>
   </div>
