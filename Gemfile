@@ -15,6 +15,7 @@ gem 'multi_xml'
 gem 'materialize-sass'
 gem 'material_icons'
 gem 'font-awesome-rails'
+gem 'table_print'
 
 # for heroku deploy
 gem 'rails_12factor', group: :production

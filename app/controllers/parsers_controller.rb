@@ -10,8 +10,8 @@ class ParsersController < ParsingController
     if user_signed_in?
       unless current_user.has_role? :admin
         if current_user.sign_in_count > 2 and current_user.status == false
-          flash[:toast] = '두번째 부터는 관리자의 승인을 받아야 사용가능합니다.'
-          redirect_to url_for(:controller => :messages, :action => :index)
+          flash[:toast] = '두번째 로그인 부터는 관리자의 승인을 받아야 사용가능합니다.'
+          redirect_to url_for(:controller => :messages, :action => :index) and return
         end
       end
     end
@@ -29,7 +29,7 @@ class ParsersController < ParsingController
     else
       if current_user.name != @student_data[0]
         flash[:toast] = '내 이름과 일치하는 학번이 아닙니다. 이름이 본인명이 아니라면 이름을 변경하세요'
-        redirect_to edit_user_registration_path
+        redirect_to edit_user_registration_path and return
       end
 
       if current_user.student.present?
@@ -37,7 +37,7 @@ class ParsersController < ParsingController
           student = current_user.student
         else
           flash[:toast] = '내 학번이 아닙니다'
-          redirect_to '/'
+          redirect_to '/' and return
         end
       else
         current_user.student = student_id
