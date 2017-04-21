@@ -17,6 +17,10 @@
 @import "materialize";
 @import "font-awesome";
 
+a:hover {
+  background-color: #fff !important;
+}
+
 .profile-body {
   margin-top: 0px;
   overflow: scroll;
