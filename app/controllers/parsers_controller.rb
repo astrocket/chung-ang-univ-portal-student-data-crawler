@@ -2,7 +2,7 @@ class ParsersController < ParsingController
 
   def index
     unless current_user.has_role? :admin
-      if current_user.student != 'n/a'
+      unless current_user.student.nil?
         redirect_to "/parsers?student=#{current_user.student}"
       end
     end
@@ -23,7 +23,7 @@ class ParsersController < ParsingController
     #슈퍼유저의 검색어를 모두 통과
     if current_user.has_role? :admin
       student = student_id
-    elsif current_user.student != 'n/a' and current_user.gender != 'n/a'
+    elsif current_user.student.present? and current_user.gender != 'n/a'
       student = current_user.student
     else
       student_data = xml_map_chunk_extraction_job(
