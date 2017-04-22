@@ -177,7 +177,17 @@ class ParsersController < ParsingController
       end
     end
 
-    (2009..2017).each do |year|
+    find_and_create_past_courses_of(student, 2017, Time.now.year)
+
+    if current_user.has_role? :admin
+      course_list
+    else
+      current_user.courses
+    end
+  end
+
+  def find_and_create_past_courses_of(student, start_year, end_year)
+    (start_year..end_year).each do |year|
       (1..4).each do |semester|
         chunk = xml_map_chunk_extraction_job(
             map_chunk = get_course_time_machine(student, year, semester),
@@ -239,11 +249,6 @@ class ParsersController < ParsingController
           end
         end
       end
-    end
-    if current_user.has_role? :admin
-      course_list
-    else
-      current_user.courses
     end
   end
 

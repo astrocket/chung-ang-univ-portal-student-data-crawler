@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="009f3d9c-d173-4b91-bc40-eb6447db2381" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/user.rb" afterPath="$PROJECT_DIR$/app/models/user.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/application.rb" afterPath="$PROJECT_DIR$/config/application.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/parsers_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/parsers_controller.rb" />
     </list>
     <ignored path="cau_parser.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -23,7 +22,7 @@
     <favorites_list name="cau_parser" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="vertical" split-proportion="0.8544233">
+    <splitter split-orientation="vertical" split-proportion="0.9">
       <split-first>
         <leaf>
           <file leaf-file-name="parsing_helper.rb" pinned="false" current-in-tab="false">
@@ -39,8 +38,8 @@
           <file leaf-file-name="parsing_controller.rb" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/controllers/concerns/parsing_controller.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="43">
-                  <caret line="223" column="6" selection-start-line="223" selection-start-column="6" selection-end-line="223" selection-end-column="6" />
+                <state relative-caret-position="242">
+                  <caret line="97" column="6" selection-start-line="97" selection-start-column="6" selection-end-line="97" selection-end-column="6" />
                   <folding />
                 </state>
               </provider>
@@ -66,11 +65,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="parsers_controller.rb" pinned="false" current-in-tab="false">
+          <file leaf-file-name="parsers_controller.rb" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/controllers/parsers_controller.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="273">
-                  <caret line="74" column="58" selection-start-line="74" selection-start-column="58" selection-end-line="74" selection-end-column="58" />
+                <state relative-caret-position="404">
+                  <caret line="184" column="26" selection-start-line="184" selection-start-column="26" selection-end-line="184" selection-end-column="26" />
                   <folding>
                     <element signature="e#2921#3686#0" expanded="false" />
                   </folding>
@@ -88,11 +87,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="application.rb" pinned="false" current-in-tab="true">
+          <file leaf-file-name="application.rb" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/config/application.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="266">
-                  <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
+                <state relative-caret-position="342">
+                  <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -166,7 +165,7 @@
             <entry file="file://$PROJECT_DIR$/db/migrate/20170422163326_add_info_columns_to_user.rb">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="76">
-                  <caret line="4" column="54" selection-start-line="4" selection-start-column="54" selection-end-line="4" selection-end-column="54" />
+                  <caret line="4" column="61" selection-start-line="4" selection-start-column="61" selection-end-line="4" selection-end-column="61" />
                   <folding />
                 </state>
               </provider>
@@ -247,12 +246,12 @@
         <option value="$PROJECT_DIR$/app/views/components/card/_person.html.erb" />
         <option value="$PROJECT_DIR$/app/views/components/card/_content_detail.html.erb" />
         <option value="$PROJECT_DIR$/app/views/parsers/show.html.erb" />
-        <option value="$PROJECT_DIR$/app/controllers/parsers_controller.rb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/application.scss" />
         <option value="$PROJECT_DIR$/app/views/components/card/_new_person.html.erb" />
         <option value="$PROJECT_DIR$/app/views/components/card/_people.html.erb" />
         <option value="$PROJECT_DIR$/app/models/user.rb" />
         <option value="$PROJECT_DIR$/config/application.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/parsers_controller.rb" />
       </list>
     </option>
   </component>
@@ -1107,12 +1106,12 @@
       <workItem from="1492679191724" duration="570000" />
       <workItem from="1492745539201" duration="12427000" />
       <workItem from="1492761055295" duration="5454000" />
-      <workItem from="1492767878889" duration="39984000" />
+      <workItem from="1492767878889" duration="41090000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="222834000" />
+    <option name="totallyTimeSpent" value="223940000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1200" extended-state="0" />
@@ -1126,7 +1125,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18079585" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33737025" sideWeight="0.4978701" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29930797" sideWeight="0.4978701" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1487,22 +1486,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20170422163326_add_info_columns_to_user.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="54" selection-start-line="4" selection-start-column="54" selection-end-line="4" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/concerns/parsing_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="43">
-          <caret line="223" column="6" selection-start-line="223" selection-start-column="6" selection-end-line="223" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/components/card/_course.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="304">
@@ -1516,16 +1499,6 @@
         <state relative-caret-position="209">
           <caret line="11" column="16" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/parsers_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="74" column="58" selection-start-line="74" selection-start-column="58" selection-end-line="74" selection-end-column="58" />
-          <folding>
-            <element signature="e#2921#3686#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1579,9 +1552,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/application.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
+        <state relative-caret-position="342">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20170422163326_add_info_columns_to_user.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="61" selection-start-line="4" selection-start-column="61" selection-end-line="4" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/concerns/parsing_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="97" column="6" selection-start-line="97" selection-start-column="6" selection-end-line="97" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/parsers_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="404">
+          <caret line="184" column="26" selection-start-line="184" selection-start-column="26" selection-end-line="184" selection-end-column="26" />
+          <folding>
+            <element signature="e#2921#3686#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
