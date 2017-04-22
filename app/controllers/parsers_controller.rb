@@ -1,7 +1,11 @@
 class ParsersController < ParsingController
 
   def index
-
+    unless current_user.has_role? :admin
+      if current_user.student != 'n/a'
+        redirect_to "/parsers?student=#{current_user.student}"
+      end
+    end
   end
 
   def show
@@ -12,6 +16,7 @@ class ParsersController < ParsingController
     unless current_user.has_role? :admin
       if User.with_role(:admin).where('student = ?', params[:student]).exists?
         flash[:toast] = '어딜감히 !'
+        redirect_to '/' and return
       end
     end
 
@@ -24,7 +29,7 @@ class ParsersController < ParsingController
       student_data = xml_map_chunk_extraction_job(
           map_chunk = get_user_data(params[:student]), #개인정보 가져오기
           key_array = %w(kornm regno chanm engnm gen sustnm mjnm probshyr advyear advshtm stdno campcd ),
-                      #0한국이름 1주민 2한자명 3영문명 4성별 5소속단과대 6전공 7현재학년 8최근등록년도 9최근등록학기 10학번 11캠퍼스
+          #0한국이름 1주민 2한자명 3영문명 4성별 5소속단과대 6전공 7현재학년 8최근등록년도 9최근등록학기 10학번 11캠퍼스
           filter_array = %w(msgCode),
           false #하나의 어레이만 필요한거는 false로 해놓고 쌓아놓는다
       )

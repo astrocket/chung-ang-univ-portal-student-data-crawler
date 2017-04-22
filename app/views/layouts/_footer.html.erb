@@ -7,15 +7,11 @@
       <% if user_signed_in? and current_user.has_role? :admin %>
         <a href="/admin">관리자</a>
       <% else %>
-        <a href="www.cau.ac.kr">Astro</a>
+        <a href="tel:1577-1577">Astro</a>
       <% end %>
     </li>
     <li class="waves-effect waves-light">
-      <% if user_signed_in? %>
-        <a href="/parsers?student=<%= current_user.student %>">홈</a>
-      <% else %>
-        <a href="/">홈</a>
-      <% end %>
+        <%= link_to '홈', parsers_path, data: { turbolinks: 'false' } %>
     </li>
     <li class="waves-effect waves-light">
       <% if user_signed_in? %>
