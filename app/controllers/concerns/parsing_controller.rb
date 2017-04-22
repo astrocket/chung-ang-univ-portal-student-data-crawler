@@ -89,9 +89,42 @@ class ParsingController < ApplicationController
     end
   end
 
-  def get_course_list(student) #수업 리스트 가져오기
+  def get_course_list(student, year, semester) #수업 리스트 가져오기
     url = 'http://sugang.cau.ac.kr/TIS/std/usk/sUskCap002/selectList.do'
-    body = "<map><stdno value='#{student}'/><corscd value='0'/><campcd value='1'/><mjsust value='3B373'/><shyr value='4'/><shregst value='1'/><capyear value='2017'/><capshtm value='1'/><entncd value='13'/><shtmfg value='N'/><colg value='3B300'/><mj value='3B373'/><extrafg value='0'/><normalfg value='1'/><year value='2017'/><shtm value='1'/><delonlyfg value='N'/><cnclfg value='0'/></map>"
+    body = "<map><stdno value='#{student}'/><corscd value='0'/><campcd value='1'/><mjsust value='3B373'/><shyr value='4'/><shregst value='1'/><capyear value='#{year}'/><capshtm value='#{semester}'/><entncd value='13'/><shtmfg value='N'/><colg value='3B300'/><mj value='3B373'/><extrafg value='0'/><normalfg value='1'/><year value='#{year}'/><shtm value='#{semester}'/><delonlyfg value='N'/><cnclfg value='0'/></map>"
+    http_xml_post_job(url, body)
+  end
+
+  def get_course_time_machine(student, year, semester)
+    key = year.to_s + semester.to_s
+
+    case year
+      when 2009
+        case semester
+          when 2
+            key = 1
+          when 4
+            key = 2
+        end
+      when 2010
+        case semester
+          when 1
+            key = 4
+          when 3
+            key = 5
+          when 2
+            key = 6
+          when 4
+            key = 7
+        end
+      when 2011
+        case semester
+          when 1
+            key = 8
+        end
+    end
+    url = 'http://cautis.cau.ac.kr/LMS/LMS/prof/myp/pLmsMyp050/selectStudDataInCourseList.do'
+    body = "<map><userId value='#{student}'/><groupCode value='cau'/><recordCountPerPage value='15'/><pageIndex value='1'/><kisuYear value='#{student.split(//).first(4).join.to_s}'/><kisuNo value='#{key}'/></map>"
     http_xml_post_job(url, body)
   end
 
@@ -149,6 +182,12 @@ class ParsingController < ApplicationController
     http_xml_post_job(url, body)
   end
 
+  def get_eclass_sub_professor(student, course_number)
+    url = 'http://cautis.cau.ac.kr/LMS/LMS/prof/lec/pLmsLec030/getProfessorDetailView.do'
+    body = "<map><lectureNo value='#{course_number}'/><userId value='#{student}'/><userType value='U'/></map>"
+    http_xml_post_job(url, body)
+  end
+
   def get_eclass_info(student, course_number)
     url = 'http://cautis.cau.ac.kr/LMS/LMS/prof/lec/pLmsLec020/getLecturePlan.do'
     body = "<map><lectureNo value='#{course_number}'/><userId value='#{student}'/><userType value='U'/></map>"
@@ -173,13 +212,14 @@ class ParsingController < ApplicationController
     http_xml_post_job(url, body)
   end
 
-  def get_time_machine(student, year, semester) #수업 리스트 가져오기
+  def get_time_machine(professor, year, semester) #수업 리스트 가져오기
     url = 'http://cautis.cau.ac.kr/LMS/LMS/prof/myp/pLmsMyp050/selectProfDataInCourseList.do'
-    body = "<map><userId value='#{student}'/><groupCode value='cau'/><recordCountPerPage value='15'/><pageIndex value='1'/><kisuYear value='#{year}'/><kisuNo value='#{year}#{semester}'/></map>"
+    body = "<map><userId value='#{professor}'/><groupCode value='cau'/><recordCountPerPage value='15'/><pageIndex value='1'/><kisuYear value='#{year}'/><kisuNo value='#{year}#{semester}'/></map>"
     http_xml_post_job(url, body)
   end
 
   #super user functions after authorizing super user
+
 
   def super_user_data(student)
     url = []

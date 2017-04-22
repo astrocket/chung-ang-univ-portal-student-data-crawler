@@ -16,7 +16,7 @@
                         <div class="card-content dark-text">
                           <span class="card-title"><%= find_by_key(profile, 'collegesubjectname') %> <%= find_by_key(profile, 'probshyr') %>학년 (<%= find_by_key(profile, 'userid').split(//).first(4).join %>년도 입학)</span>
                           <% if current_user.has_role? :admin %>
-                              <img src="http://cauid.cau.ac.kr/Symtra_Issue/IssueShowImage.asp?IDNo=<%= @student_data[10] %>" alt="">
+                              <%= image_tag "http://cauid.cau.ac.kr/Symtra_Issue/IssueShowImage.asp?IDNo=#{find_by_key(profile, 'userid')}", height: '100px', src: 'Image Not Found', onerror: 'this.error=null;this.src="/assets/no_user.png"' %>
                               <p>
                                 관리자 계정용 정보<br>
                                 학번 : <%= find_by_key(profile, 'userid') %><br>

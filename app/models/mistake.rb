@@ -1,0 +1,2 @@
+class Mistake < ApplicationRecord
+end

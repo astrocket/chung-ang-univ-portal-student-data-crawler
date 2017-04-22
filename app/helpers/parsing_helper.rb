@@ -39,4 +39,12 @@ module ParsingHelper
     end
   end
 
+  def find_semester
+    if (Time.now.month).between?(2, 7)
+      '1'
+    else
+      '2'
+    end
+  end
+
 end

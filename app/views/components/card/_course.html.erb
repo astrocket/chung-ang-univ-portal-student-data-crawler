@@ -1,17 +1,16 @@
 <div class="col s12 m6 l4">
   <div class="card course-card white darken-1">
     <div class="card-content dark-text">
-      <span class="card-title"><%= find_by_key(course, 'kornm') %></span>
+      <span class="card-title"><%= course.name %></span>
       <p>
-        교수명 : <%= find_by_key(course, 'profnm') %><br>
-        과목번호 : <%= find_by_key(course, 'sbjtno') %>-<%= find_by_key(course, 'clssno') %><br>
-        과목분류 : <%= find_by_key(course, 'pobtnm') %><br>
+        교수명 : <%= course.professor_name %><br>
+        과목분류 : <%= course.major %><br>
         수업정보<br>
-        <%= CGI.unescapeHTML(find_by_key(course, 'ltbdrm')).html_safe %>
+        <%= CGI.unescapeHTML(course.location).html_safe %>
       </p>
     </div>
     <div class="card-action">
-      <%= link_to 'eClass', eclass_path(:student => params[:student], :course => find_by_key(course, 'kornm'), :professor => find_by_key(course, 'profnm')) %>
+      <%= link_to 'eClass', eclass_path(:student => params[:student], :course => course.name, :professor => course.professor_name) %>
     </div>
   </div>
 </div>

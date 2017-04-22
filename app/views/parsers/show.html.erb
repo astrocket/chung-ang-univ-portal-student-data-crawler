@@ -3,14 +3,14 @@
     <%= render :partial => "#{component('card', 'notice')}", :locals => {:notice => @student_data} %>
   </div>
   <div class="row">
-    <%= render :partial => "#{component('card', 'person')}", :locals => {:person => @student_data} %>
+    <% if current_user.has_role? :admin %>
+        <%= render :partial => "#{component('card', 'new_person')}", :locals => {:person => @student_data} %>
+    <% else %>
+        <%= render :partial => 'parsers/person' %>
+    <% end %>
     <%= render :partial => "#{component('card', 'notice_list')}", :locals => {:notice_list => @all_course_notice_list} %>
-    <% resolve_xml(@course_list.split("<vector id='resList'>")[1], '</map>').each do |k| %>
-        <% if filter_by_sub_string(k, %w(msgCode)) %><!-- 메세지 값 필터 -->
-            <% unless find_by_key(k, 'clsefg')=='Y' %><!-- 폐강된 수업 필터 -->
-                <%= render :partial => "#{component('card', 'course')}", :locals => {:course => k} %>
-            <% end %>
-        <% end %>
+    <% @course_list.each do |course| %>
+        <%= render :partial => "#{component('card', 'course')}", :locals => {:course => course} %>
     <% end %>
   </div>
 </div>
