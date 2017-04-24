@@ -1,20 +1,20 @@
 <% flash.each do |type, message| %>
-    <% if type == "success" %>
+    <% if type == "notice" %>
         <script>
           $(function() {
-            Materialize.toast("<%= message %>", 3000);
+            Materialize.toast("<%= message %>", 5000);
           });
         </script>
-    <% elsif type == "toast" %>
+    <% elsif type == "error" %>
         <script>
           $(function() {
-            Materialize.toast("<%= message %>", 3000);
+            Materialize.toast("<%= message %>", 10000);
           });
         </script>
     <% else %>
         <script>
           $(function() {
-            Materialize.toast("<%= message %>", 3000);
+            Materialize.toast("<%= message %>", 5000);
           });
         </script>
     <% end %>

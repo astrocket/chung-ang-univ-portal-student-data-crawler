@@ -3,11 +3,7 @@
     <%= render :partial => "#{component('card', 'notice')}", :locals => {:notice => @student_data} %>
   </div>
   <div class="row">
-    <% if current_user.has_role? :admin %>
-        <%= render :partial => "#{component('card', 'new_person')}", :locals => {:person => @student_data} %>
-    <% else %>
-        <%= render :partial => 'parsers/person' %>
-    <% end %>
+    <%= render :partial => 'parsers/person' %>
     <%= render :partial => "#{component('card', 'notice_list')}", :locals => {:notice_list => @all_course_notice_list} %>
     <% @course_list.each do |course| %>
         <%= render :partial => "#{component('card', 'course')}", :locals => {:course => course} %>

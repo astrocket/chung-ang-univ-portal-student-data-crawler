@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170422163326) do
+ActiveRecord::Schema.define(version: 20170423020525) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -120,6 +120,24 @@ ActiveRecord::Schema.define(version: 20170422163326) do
     t.string   "recent_year",            default: "n/a"
     t.string   "recent_semester",        default: "n/a"
     t.string   "campus",                 default: "n/a"
+    t.string   "college_name",           default: "n/a"
+    t.string   "college_code",           default: "n/a"
+    t.string   "department_code",        default: "n/a"
+    t.string   "major_code",             default: "n/a"
+    t.float    "final_gpa",              default: 0.0
+    t.string   "admission_type",         default: "n/a"
+    t.string   "tel",                    default: "n/a"
+    t.string   "phone",                  default: "n/a"
+    t.string   "military",               default: "n/a"
+    t.string   "mail",                   default: "n/a"
+    t.string   "address",                default: "n/a"
+    t.string   "preschool_type",         default: "n/a"
+    t.string   "preschool_name",         default: "n/a"
+    t.string   "parent_name",            default: "n/a"
+    t.string   "parent_type",            default: "n/a"
+    t.string   "parent_tel",             default: "n/a"
+    t.string   "parent_phone",           default: "n/a"
+    t.string   "parent_address",         default: "n/a"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end

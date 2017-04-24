@@ -8,7 +8,7 @@ class TimemachineController < ParsingController
             map_chunk = get_time_machine(professor, year, semester),
             key_array = %w(lectureno lecturenamenum profname studydate lecturetype subjectname lecturecollegetype),
             filter_array = %w(msgCode),
-            true
+            true, true
         )
         if chunk.present?
           @time_machine << chunk

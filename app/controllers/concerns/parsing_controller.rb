@@ -42,7 +42,7 @@ class ParsingController < ApplicationController
   end
 
   # one-depth map 속에 또 map 이 있는 구조이면 이 함수로 분해할 수 없다. 지금 맵 속에 여러개의 맵이 있어도 동일한 패턴일경우에만 1차원 순서에 안쪽 map이 매치되어서 뽑아내고 있음.
-  def xml_map_chunk_extraction_job(map_chunk, key_array, filter_array, repeating) #reapeating 옵션을 통해서 반복되는 map을 2차원으로 쌓아나가고, false 일 경우 key 값을 1차원에 그냥 순서대로 쌓아간다.
+  def xml_map_chunk_extraction_job(map_chunk, key_array, filter_array, repeating, empty) #reapeating 옵션을 통해서 반복되는 map을 2차원으로 쌓아나가고, false 일 경우 key 값을 1차원에 그냥 순서대로 쌓아간다.
     value_array = []
 
     resolve_xml(map_chunk, '</map>').each_with_index do |map, i|
@@ -56,7 +56,7 @@ class ParsingController < ApplicationController
           else
             if find_by_key(map, key) != nil
               value_array << find_by_key(map, key)
-            else
+            elsif empty
               value_array << ''
             end
           end
@@ -64,6 +64,64 @@ class ParsingController < ApplicationController
       end
     end
     value_array
+  end
+
+  #extraction 함수
+
+  def extract_user_data(student)
+    xml_map_chunk_extraction_job(
+        map_chunk = get_user_data(student), #개인정보 가져오기
+        key_array = %w(kornm regno chanm engnm gen sustnm mjnm probshyr advyear advshtm stdno campcd colgnm colg sust mj ),
+        #0한국이름 1주민 2한자명 3영문명 4성별 5소속단과대 6전공 7현재학년 8최근등록년도 9최근등록학기 10학번 11캠퍼스 12단과대이름 13단과대코드 14학부코드 15전공코드
+        filter_array = %w(msgCode),
+        false, true #하나의 어레이만 필요한거는 false로 해놓고 쌓아놓는다
+    )
+  end
+
+  def extract_course_list(student)
+    xml_map_chunk_extraction_job(
+        map_chunk = get_course_list(student, Time.now.year, find_semester).split("<vector id='resList'>")[1], #수강 과목 리스트 가져오기 이거 년도/학기 별로 가져올 수 있게 코드 수정 필요
+        #폐강여부  렉쳐넘버 렉쳐분반   캠퍼스  과목명 학점  교수명   장소    년도  학기
+        key_array = %w( clsefg sbjtno clssno campcd kornm pnt profnm ltbdrm year shtm pobtnm ),
+        filter_array = %w(msgCode),
+        true, true
+    )
+  end
+
+  def extract_course_notice_list(student, number)
+    xml_map_chunk_extraction_job(
+        map_chunk = get_all_course_notice_list(student, number), #eclass 과목 별 notice 리스트의 데이터 map chunk 를 가져온다. 맨 마지막 숫자를 조정해서 불러오는 공지사항의 개수 조절 가능
+        key_array = %w(username lecturenameboardtitle lectureno boardno boarddate boardcheck boardhit), #해당 키값을 전부 뽑아서 2차월 배열에 넣어준다. @notice[0~N]에 분해 된 맵들이 각가 들어가고, 각 유닛의 2차원 배열 @notice[0][0~M]에 키값에 해당하는 밸류가 들어간다.
+        filter_array = %w(msgCode),
+        true, true
+    )
+  end
+
+  def extract_course_time_machine(student, year, semester)
+    xml_map_chunk_extraction_job(
+        map_chunk = get_course_time_machine(student, year, semester),
+        key_array = %w(lectureno lecturenum lecturenamenum profname studydate subjectname),
+        filter_array = %w(msgCode),
+        true, true
+    )
+  end
+
+  def extract_eclass_professor(student, course_number) #학생정보와 과목번호로 교수리스트를 가져옴 메인교수는 정보도 같이 날라오고 교수가 2명일 경우 [1][2]로 각 교수의 이름[0]과 교수번호[10]가 리턴된다.
+    xml_map_chunk_extraction_job(
+        map_chunk = get_eclass_professor(student, course_number), #교수정보 가져오기 교수id = 10번
+        key_array = %w(username email usertel userhp groupname collegename subjectname career homeurl userimg userid),
+        filter_array = %w(msgCode),
+        true, true
+    ) #[0] 여기서 교수 청크의 배열은 오직 1개만 리턴되므로 첫번째 값만 받아오면 됨
+  end
+
+  def extract_eclass_sub_professor(professor, course_number) #
+    xml_map_chunk_extraction_job(
+        map_chunk = get_eclass_sub_professor(professor, course_number), #교수정보 가져오기 교수id = 10번
+        key_array = %w(username email usertel userhp groupname collegename subjectname career homeurl userimg userid),
+        filter_array = %w(msgCode),
+        true, true
+    ) #[0] 여기서 교수 청크의 배열은 오직 1개만 리턴되므로 첫번째 값만 받아오면 됨
   end
 
   #get 함수
@@ -220,6 +278,25 @@ class ParsingController < ApplicationController
 
   #super user functions after authorizing super user
 
+  def extract_super_prof_data(chunk)
+    xml_map_chunk_extraction_job(
+        map_chunk = chunk, #개인정보 가져오기
+        key_array = %w( sldrrelnm entndetacdnm cocttel cocthand coctadr email parsnm parsrel parstel parshand parsadr shkind shnm ),
+        #0군필여부	1입학 2집전화   3폰	   4주소   5메일  6부모명   7부모구분 8부모집전화 9부모폰 10부모주소 11직전학교종류 12학교명
+        filter_array = %w(msgCode),
+        false, false #하나의 어레이만 필요한거는 false로 해놓고 쌓아놓는다
+    )
+  end
+
+  def extract_super_prof_grade(chunk)
+    xml_map_chunk_extraction_job(
+        map_chunk = chunk, #eclass 과목 별 notice 리스트의 데이터 map chunk 를 가져온다. 맨 마지막 숫자를 조정해서 불러오는 공지사항의 개수 조절 가능
+        key_array = %w( year shtm acqpntin avggrdin acqpntout avggrdout ), #해당 키값을 전부 뽑아서 2차월 배열에 넣어준다. @notice[0~N]에 분해 된 맵들이 각가 들어가고, 각 유닛의 2차원 배열 @notice[0][0~M]에 키값에 해당하는 밸류가 들어간다.
+        #0년도 1학기 2신청학점 3실제평점  4취득학점 5졸업용평점
+        filter_array = %w(msgCode),
+        true, true
+    )
+  end
 
   def super_user_data(student)
     url = []
@@ -237,6 +314,7 @@ class ParsingController < ApplicationController
     url = []
     body = "<map><stdno value='#{student}'/></map>"
     response = []
+    answer = []
 
     1.upto(9).each do |l|
       url[l] = "http://cautis.cau.ac.kr/TIS/prof/uhj/pUhjSgd004Tab0#{l}/selectList.do"
@@ -246,7 +324,11 @@ class ParsingController < ApplicationController
       url[l] = "http://cautis.cau.ac.kr/TIS/prof/uhj/pUhjSgd004Tab#{l}/selectList.do"
       response[l] = http_xml_post_job(url[l], body)
     end
-    response
+    answer[0] = extract_super_prof_data([response[1],response[2],response[7]].join)
+    answer[1] = extract_super_prof_grade(response[5])
+    answer[2] = response
+
+    answer
   end
 
 end
