@@ -14,7 +14,7 @@ class ParsersController < ParsingController
     if params[:student].nil?
       redirect_to root_path, notice: '계정에 학번값이 입력되지 않았습니다' and return
     end
-    start_year = 2012
+    start_year = 2017
     #슈퍼유저 // 일반유저
     if current_user.has_role?(:admin) #슈퍼유저
       student = params[:student]
