@@ -1,4 +1,5 @@
 RailsAdmin.config do |config|
+  NUMBER = 20
   require 'i18n'
   config.total_columns_width = 2000
   ### Popular gems integration
@@ -79,7 +80,7 @@ RailsAdmin.config do |config|
       :course_label_method
     end
     list do
-      items_per_page 50
+      items_per_page NUMBER
       field :name do
         label '과목명'
       end
@@ -107,14 +108,14 @@ RailsAdmin.config do |config|
 
   config.model 'Hakboo' do
     list do
-      items_per_page 100
+      items_per_page NUMBER
     end
     exclude_fields :created_at, :updated_at
   end
 
   config.model 'Professor' do
     list do
-      items_per_page 100
+      items_per_page NUMBER
     end
     exclude_fields :created_at, :updated_at
   end
