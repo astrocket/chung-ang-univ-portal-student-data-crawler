@@ -79,6 +79,7 @@ RailsAdmin.config do |config|
       :course_label_method
     end
     list do
+      items_per_page 50
       field :name do
         label '과목명'
       end
@@ -105,10 +106,16 @@ RailsAdmin.config do |config|
   end
 
   config.model 'Hakboo' do
+    list do
+      items_per_page 100
+    end
     exclude_fields :created_at, :updated_at
   end
 
   config.model 'Professor' do
+    list do
+      items_per_page 100
+    end
     exclude_fields :created_at, :updated_at
   end
 
