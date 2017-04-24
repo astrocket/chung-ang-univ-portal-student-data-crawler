@@ -10,21 +10,42 @@
             <div class="card-content dark-text">
             <span class="card-title"><%= @target_user.department_name %> <%= @target_user.major_name %> <%= @target_user.recent_grade %>
               학년 (<%= @target_user.student.split(//).first(4).join %>년도 입학)</span>
-              <div class="card-info col s9 m9 l9">
-                관리자계정용 정보<br>
-                이름 : <%= @target_user.name %>(<%= @target_user.birth %>)<br>
-                한문 : <%= @target_user.chinese_name %><br>
-                영문 : <%= @target_user.english_name %><br>
-                소속 : <%= @target_user.campus=='1' ? '서울캠퍼스' : '안성캠퍼스or기타' %><br>
-                폰번 : <%= %><br>
-                메일 : <%=  %><br>
-                주소 : <%=  %> <%= %><br>
-                본가 : <%=  %> <%=  %><br>
-                <%= @super_info %>
-                <%= @super_grade %>
-              </div>
               <div class="card-image col s3 m3 l3">
                 <%= image_tag "http://cauid.cau.ac.kr/Symtra_Issue/IssueShowImage.asp?IDNo=#{@target_user.student}", src: 'Image Not Found', onerror: 'this.error=null;this.src="/assets/no_user.png"' %>
+              </div>
+              <div class="card-info col s9 m9 l9">
+                이름 : <%= @target_user.name %>(<%= @target_user.chinese_name %>/<%= @target_user.english_name %>)<br>
+                평점 : <%= @target_user.final_gpa %><br>
+                주민 : <%= @target_user.birth %><br>
+                소속 : <%= @target_user.campus=='1' ? '서울캠퍼스' : '안성캠퍼스or기타' %><br>
+                폰번 : <%= @target_user.phone %><br>
+                메일 : <%= @target_user.mail %><br>
+                병역 : <%= @target_user.military %><br>
+                주소 : <%= @target_user.address %> (<%= @target_user.parent_address %>)<br>
+                입학 : <%= @target_user.admission_type %><br>
+                학력 : <%= @target_user.preschool_type %><br>
+                전학교 : <%= @target_user.preschool_name %>
+              </div>
+              <div class="col s12 m12 l12">
+                <hr>
+                <table class="striped">
+                  <tr>
+                    <th>학기</th>
+                    <th>신청</th>
+                    <th>평점</th>
+                    <th>취득</th>
+                    <th>졸업</th>
+                  </tr>
+                  <% @super_grade.each do |semester| %>
+                      <tr>
+                        <th><%= semester[0].present? ? "#{semester[0]}-" : '총 평점' %><%= semester[1] %></th>
+                        <td><%= semester[2] %></td>
+                        <td><%= semester[3] %></td>
+                        <td><%= semester[4] %></td>
+                        <td><%= semester[5] %></td>
+                      </tr>
+                  <% end %>
+                </table>
               </div>
             </div>
             <div class="card-action">

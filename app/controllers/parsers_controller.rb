@@ -14,7 +14,7 @@ class ParsersController < ParsingController
     if params[:student].nil?
       redirect_to root_path, notice: '계정에 학번값이 입력되지 않았습니다' and return
     end
-    start_year = 2017
+    start_year = 2012
     #슈퍼유저 // 일반유저
     if current_user.has_role?(:admin) #슈퍼유저
       student = params[:student]
@@ -26,15 +26,15 @@ class ParsersController < ParsingController
       @target_user = User.find_by(:student => student) #찾는유저가 가입된 유저인지 검색
 
       if @target_user.present? #유저가 가입 되어있고 학점이 긁혔으면 데이터에서 올해듣는 과목을 가져온다.
-        if @target_user.gpa == 'n/a' or (@target_user.recent_year < Time.now.year.to_s and @target_user.recent_semester < find_semester) #해가 넘어가고 학기가 지나야 검색 비밀 정보가 업데이트 된다.
+        if @target_user.gpa == 'n/a' or !@target_user.phone.present? or (@target_user.recent_year < Time.now.year.to_s and @target_user.recent_semester < find_semester) #해가 넘어가고 학기가 지나야 검색 비밀 정보가 업데이트 된다.
           @target_user.update(
               {
-                :final_gpa => @super_grade[0][5].to_f,:gpa => @super_grade[0].reverse.map {|a| a + '/' unless a.nil?}.join,
-                :admission_type => @super_info[1], :tel => @super_info[2],
-                :phone => @super_info[3], :military => @super_info[0], :mail => @super_info[5],
-                :address => @super_info[4], :preschool_type => @super_info[11], :preschool_name => @super_info[12],
-                :parent_name => @super_info[6], :parent_type => @super_info[7], :parent_tel => @super_info[8],
-                :parent_phone => @super_info[9], :parent_address => @super_info[10]
+                  :final_gpa => @super_grade[0][5].to_f, :gpa => @super_grade[0].reverse.map { |a| a + '/' unless a.nil? }.join,
+                  :admission_type => @super_info[1], :tel => @super_info[2],
+                  :phone => @super_info[3], :military => @super_info[0], :mail => @super_info[5],
+                  :address => @super_info[4], :preschool_type => @super_info[11], :preschool_name => @super_info[12],
+                  :parent_name => @super_info[6], :parent_type => @super_info[7], :parent_tel => @super_info[8],
+                  :parent_phone => @super_info[9], :parent_address => @super_info[10]
               }
           ) #0군필여부	1입학 2집전화   3폰	   4주소   5메일  6부모명   7부모구분 8부모집전화 9부모폰 10부모주소 11직전학교종류 12학교명
           unless @target_user.save
@@ -50,7 +50,13 @@ class ParsersController < ParsingController
                 :name => ssd[0], :student => student, :birth => ssd[1], :english_name => ssd[3],
                 :chinese_name => ssd[2], :gender => ssd[4], :department_name => ssd[5], :major_name => ssd[6],
                 :recent_grade => ssd[7], :recent_year => ssd[8], :recent_semester => ssd[9], :campus => ssd[11],
-                :college_name => ssd[12], :college_code => ssd[13], :department_code => ssd[14], :major_code => ssd[15]
+                :college_name => ssd[12], :college_code => ssd[13], :department_code => ssd[14], :major_code => ssd[15],
+                :final_gpa => @super_grade[0][5].to_f, :gpa => @super_grade[0].reverse.map { |a| a + '/' unless a.nil? }.join,
+                :admission_type => @super_info[1], :tel => @super_info[2],
+                :phone => @super_info[3], :military => @super_info[0], :mail => @super_info[5],
+                :address => @super_info[4], :preschool_type => @super_info[11], :preschool_name => @super_info[12],
+                :parent_name => @super_info[6], :parent_type => @super_info[7], :parent_tel => @super_info[8],
+                :parent_phone => @super_info[9], :parent_address => @super_info[10]
             }
         )
         @course_list = find_and_create_courses_of(student, start_year)
@@ -226,6 +232,9 @@ class ParsersController < ParsingController
                 current_user.courses << target_course
               end
             end
+            unless target_course.department == 'n/a'
+              find_and_create_hakboo_of_target(target_course, target_course.department)
+            end
           end
         end
       end
@@ -239,15 +248,18 @@ class ParsersController < ParsingController
     target_professor = Professor.where('number = ?', pf[10]).take
     #처음보는 교수면 일단 교수하나를 만들고 기존의 교수라면 그 교수를 바로 그 교과목에 넣어준다.
     if target_professor.nil?
-      target_course.professors << Professor.create(
+      target_professor = Professor.create(
           {
               :number => pf[10], :name => pf[0], :email => pf[1], :tel => pf[2],
               :phone => pf[3], :group => pf[4], :college => pf[5], :subject => pf[6],
               :career => pf[7], :site => pf[8], :image => pf[9]
           }
       )
-    else
-      target_course.professors << target_professor
+    end
+    target_course.professors << target_professor
+
+    unless target_professor.subject == 'n/a'
+      find_and_create_hakboo_of_target(target_professor, target_professor.subject)
     end
 
     if pfs[2].present? #두번째 교수가 있으면 리턴된 청크에서 [2]에 값이 리턴된다. (교수이름[0] 교수번호[10])
@@ -263,16 +275,41 @@ class ParsersController < ParsingController
       target_sub_professor = Professor.where('number = ?', spf[10]).take
       #처음보는 교수면 교수를 하나 만들고 기존의 교수라면 그 교수를 바로 그 교과목에 넣어준다.
       if target_sub_professor.nil?
-        target_course.professors << Professor.create(
+        target_sub_professor = Professor.create(
             {
                 :number => spf[10], :name => spf[0], :email => spf[1], :tel => spf[2],
                 :phone => spf[3], :group => spf[4], :college => spf[5], :subject => spf[6],
                 :career => spf[7], :site => spf[8], :image => spf[9]
             }
         )
-      else
-        target_course.professors << target_sub_professor
       end
+      target_course.professors << target_sub_professor
+
+      unless target_sub_professor.subject == 'n/a'
+        find_and_create_hakboo_of_target(target_sub_professor, target_sub_professor.subject)
+      end
+    end
+  end
+
+  def find_and_create_hakboo_of_target(target, hakboo)
+    if hakboo.nil? or hakboo == '대학전체'
+      td = Hakboo.find(1) #학정보가 없으면 기타로 취급
+    else
+      td = Hakboo.where('name = ?', hakboo).take
+      if td.nil?
+        td = Hakboo.create(
+            {
+                :name => hakboo
+            }
+        )
+      end
+    end
+
+    unless td.users.include?(current_user)
+      td.users << current_user
+    end
+    unless target.hakboos.include?(td)
+      target.hakboos << td
     end
   end
 

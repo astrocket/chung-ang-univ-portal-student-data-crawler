@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170423020525) do
+ActiveRecord::Schema.define(version: 20170424131157) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,10 +33,33 @@ ActiveRecord::Schema.define(version: 20170423020525) do
     t.datetime "updated_at",                         null: false
   end
 
+  create_table "courses_hakboos", id: false, force: :cascade do |t|
+    t.integer "course_id", null: false
+    t.integer "hakboo_id", null: false
+    t.index ["hakboo_id", "course_id"], name: "index_courses_hakboos_on_hakboo_id_and_course_id", using: :btree
+  end
+
   create_table "courses_professors", id: false, force: :cascade do |t|
     t.integer "course_id",    null: false
     t.integer "professor_id", null: false
     t.index ["professor_id", "course_id"], name: "index_courses_professors_on_professor_id_and_course_id", using: :btree
+  end
+
+  create_table "hakboos", force: :cascade do |t|
+    t.string   "name",       default: "n/a"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  create_table "hakboos_professors", id: false, force: :cascade do |t|
+    t.integer "hakboo_id",    null: false
+    t.integer "professor_id", null: false
+  end
+
+  create_table "hakboos_users", id: false, force: :cascade do |t|
+    t.integer "hakboo_id", null: false
+    t.integer "user_id",   null: false
+    t.index ["user_id", "hakboo_id"], name: "index_hakboos_users_on_user_id_and_hakboo_id", using: :btree
   end
 
   create_table "information", force: :cascade do |t|

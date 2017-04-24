@@ -13,6 +13,7 @@ class User < ApplicationRecord
 
   has_many :sugangs, dependent: :destroy
   has_many :courses, through: :sugangs
+  has_and_belongs_to_many :hakboos
 
   has_many :messages, dependent: :destroy
 

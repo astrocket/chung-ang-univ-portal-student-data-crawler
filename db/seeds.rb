@@ -7,5 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 admin_user = User.create( email: 'admin@cau.ac.kr', name: '관리자', password: 'masterofcau', status: true, remember_created_at: Time.now )
-
+Hakboo.create( name: '기타')
 admin_user.add_role :admin

@@ -46,6 +46,9 @@ RailsAdmin.config do |config|
   end
 
   config.model 'User' do
+    object_label_method do
+      :user_label_method
+    end
     list do
       field :name do
         label '이름'
@@ -71,4 +74,51 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model 'Course' do
+    object_label_method do
+      :course_label_method
+    end
+    list do
+      field :name do
+        label '과목명'
+      end
+      field :number do
+        label '과목번호'
+      end
+      field :professors do
+        label '교수'
+      end
+      field :users do
+        label '수강생'
+      end
+      field :hakboos do
+        label '단과대'
+      end
+      field :year do
+        label '연도'
+      end
+      field :semester do
+        label '학기'
+      end
+
+    end
+  end
+
+  config.model 'Hakboo' do
+    exclude_fields :created_at, :updated_at
+  end
+
+  config.model 'Professor' do
+    exclude_fields :created_at, :updated_at
+  end
+
+  private
+
+  def user_label_method
+    "#{self.name}(#{self.department_name})"
+  end
+
+  def course_label_method
+    "[#{self.year}-#{self.semester}]#{self.name}"
+  end
 end
