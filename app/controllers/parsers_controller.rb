@@ -285,7 +285,7 @@ class ParsersController < ParsingController
       end
       target_course.professors << target_sub_professor
 
-      unless target_sub_professor.subject == 'n/a'
+      unless target_sub_professor.subject == 'n/a' or current_user.has_role?(:admin)
         find_and_create_hakboo_of_target(target_sub_professor, target_sub_professor.subject)
       end
     end
