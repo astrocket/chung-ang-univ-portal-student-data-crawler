@@ -173,12 +173,12 @@ class ParsersController < ParsingController
         if current_user.has_role? :admin
           course_list << target_course
         else
-          current_user.courses << target_course
+          current_user.courses << target_course unless current_user.courses.include?(target_course)
         end
       end
     end
 
-    # find_and_create_past_courses_of(student, start_year, Time.now.year) # only if you need to store past courses
+    find_and_create_past_courses_of(student, start_year, Time.now.year) # only if you need to store past courses
 
     if current_user.has_role? :admin
       course_list
@@ -209,7 +209,7 @@ class ParsersController < ParsingController
                 find_and_add_professor_of_course(target_course, student, target_course.number)
               end
               unless current_user.has_role? :admin
-                current_user.courses << target_course
+                current_user.courses << target_course unless current_user.courses.include?(target_course)
               end
             elsif current_user.courses.include?(target_course) #존재하는 수강정보인데 나한테 있으면 업데이트만 해주고 저장하지 않는다.
               #찾은 수강정보가 있긴한데 아직 기간정보가 입력되지 않은 자료, 즉 현재학기의 정보를 긁어서 만든 과목일 경우에 추가 정보를 업데이트 시켜주는 로직
@@ -230,7 +230,7 @@ class ParsersController < ParsingController
               end
             else #존재하는 수강정보인데 나한테 없으면 추가로 저장해준다.
               unless current_user.has_role? :admin
-                current_user.courses << target_course
+                current_user.courses << target_course unless current_user.courses.include?(target_course)
               end
             end
             unless target_course.department == 'n/a'
