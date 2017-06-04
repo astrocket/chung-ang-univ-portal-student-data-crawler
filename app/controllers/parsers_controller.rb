@@ -22,6 +22,7 @@ class ParsersController < ParsingController
       sud = super_user_prof_data(student)
       @super_info = sud[0]
       @super_grade = sud[1]
+      #@sud_checker = super_user_prof_all_data(student)
 
       @target_user = User.find_by(:student => student) #찾는유저가 가입된 유저인지 검색
 

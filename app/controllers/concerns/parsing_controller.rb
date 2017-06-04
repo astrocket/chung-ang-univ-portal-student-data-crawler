@@ -3,15 +3,7 @@ class ParsingController < ApplicationController
 
   #파싱과 관련 된 컨트롤러 함수들 모음
 
-  def http_xml_post_job_d(url, body)
 
-    response = HTTParty.post(url, :headers=>{'Content-Type'=>'application/xml'},:body=>body).body.force_encoding('UTF-8')
-    if response.nil?
-      flash[:error] = '요청하신 값을 가져오는데 실패하였습니다. 에러 : http_xml_post_job failed'
-    else
-      response
-    end
-  end
 
   def http_xml_post_job(url, body)
     uri = URI.parse(url)
@@ -329,6 +321,36 @@ class ParsingController < ApplicationController
     answer[2] = response
 
     answer
+  end
+
+  def super_user_prof_all_data(student)
+    url = []
+    body = "<map><stdno value='#{student}'/></map>"
+    response = []
+    answer = []
+
+    1.upto(9).each do |l|
+      url[l] = "http://cautis.cau.ac.kr/TIS/prof/uhj/pUhjSgd004Tab0#{l}/selectList.do"
+      response[l] = http_xml_post_job(url[l], body)
+    end
+    10.upto(14).each do |l|
+      url[l] = "http://cautis.cau.ac.kr/TIS/prof/uhj/pUhjSgd004Tab#{l}/selectList.do"
+      response[l] = http_xml_post_job(url[l], body)
+    end
+
+    response
+  end
+
+  private
+
+  def http_xml_post_job_d(url, body)
+    parser = ParserService.new(url, body)
+    result = parser.http_xml_post_job
+    if result.nil?
+      redirect_to parser_path
+    else
+      result
+    end
   end
 
 end
