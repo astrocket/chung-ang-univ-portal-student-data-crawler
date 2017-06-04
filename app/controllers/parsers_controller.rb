@@ -178,7 +178,7 @@ class ParsersController < ParsingController
       end
     end
 
-    find_and_create_past_courses_of(student, start_year, Time.now.year)
+    # find_and_create_past_courses_of(student, start_year, Time.now.year) # only if you need to store past courses
 
     if current_user.has_role? :admin
       course_list
