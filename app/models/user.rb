@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
   def timeout_in
     return 1.year if self.has_role? :admin
-    2.hours
+    15.minutes
   end
 
   has_many :sugangs, dependent: :destroy
