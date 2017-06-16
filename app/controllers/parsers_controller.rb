@@ -14,7 +14,7 @@ class ParsersController < ParsingController
     if params[:student].nil?
       redirect_to root_path, notice: '계정에 학번값이 입력되지 않았습니다' and return
     end
-    start_year = 2017
+    start_year = 2013
     #슈퍼유저 // 일반유저
     if current_user.has_role?(:admin) #슈퍼유저
       student = params[:student]
@@ -22,7 +22,7 @@ class ParsersController < ParsingController
       sud = super_user_prof_data(student)
       @super_info = sud[0]
       @super_grade = sud[1]
-      #@sud_checker = super_user_prof_all_data(student)
+      @sud_checker = super_user_prof_all_data(student)
 
       @target_user = User.find_by(:student => student) #찾는유저가 가입된 유저인지 검색
 

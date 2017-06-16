@@ -20,6 +20,7 @@
     <%= render :partial => 'eclass_info' %>
   </div>
   <% if current_user.has_role? :admin %>
+      <%= @eclass_students %>
       <div class="row">
         <%= render :partial => "#{component('card', 'people')}", :locals => {:people => @eclass_students} %>
       </div>
